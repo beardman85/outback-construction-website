@@ -3,6 +3,14 @@
   "name": "outback-construction-website",
   "main": "worker/index.ts",
   "compatibility_date": "2024-11-01",
+  // Non-secret config lives here so it survives every `wrangler deploy`
+  // (dashboard-set plaintext vars get wiped on redeploy; secrets do not).
+  // RESEND_API_KEY stays a dashboard Secret — never commit it.
+  "vars": {
+    // TODO[MATT]: change LEAD_TO_EMAIL to Matt's real inbox before launch.
+    "LEAD_TO_EMAIL": "tyson@bdxomaha.com",
+    "LEAD_BCC_EMAIL": "marketing@bdxomaha.com"
+  },
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",

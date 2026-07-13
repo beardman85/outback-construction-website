@@ -11,6 +11,8 @@
  *   RESEND_API_KEY   (secret)   Resend API key. Required to actually send email.
  *   LEAD_TO_EMAIL               Where owner notifications go (Matt's inbox).
  *   LEAD_FROM_EMAIL  (optional) Sender, default "Outback Construction <no-reply@outbackconstruction.net>".
+ *   LEAD_BCC_EMAIL   (optional) BCC on the owner notification. Default marketing@bdxomaha.com;
+ *                              comma-separate for several; set to "" to disable.
  *   LEAD_WEBHOOK_URL (optional) Also POST the lead JSON here (Zapier/Make/Slack/CRM).
  *
  * TODO[MATT/BUILD]: verify the outbackconstruction.net domain in Resend (SPF/DKIM/
@@ -22,6 +24,7 @@ interface Env {
   RESEND_API_KEY?: string;
   LEAD_TO_EMAIL?: string;
   LEAD_FROM_EMAIL?: string;
+  LEAD_BCC_EMAIL?: string;
   LEAD_WEBHOOK_URL?: string;
 }
 
@@ -55,6 +58,10 @@ const arrayBufferToBase64 = (buf: ArrayBuffer) => {
 };
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// Comma-separated address list -> array (supports multiple to/bcc recipients).
+const splitEmails = (s: string | undefined) =>
+  (s || '').split(',').map((e) => e.trim()).filter(Boolean);
+const BCC_DEFAULT = 'marketing@bdxomaha.com';
 
 const FROM_DEFAULT = 'Outback Construction <no-reply@outbackconstruction.net>';
 const PHONE_DISPLAY = '(402) 456-7968';
@@ -275,17 +282,20 @@ async function handleLead(request: Request, env: Env): Promise<Response> {
 
   let delivered = false;
   try {
-    // 1) Owner notification (with attachment + reply-to the customer)
-    if (env.RESEND_API_KEY && env.LEAD_TO_EMAIL) {
+    // 1) Owner notification (with attachment + reply-to the customer, BCC marketing)
+    const toList = splitEmails(env.LEAD_TO_EMAIL);
+    const bccList = splitEmails(env.LEAD_BCC_EMAIL !== undefined ? env.LEAD_BCC_EMAIL : BCC_DEFAULT);
+    if (env.RESEND_API_KEY && toList.length) {
       const o = ownerEmail(lead);
       const ownerPayload: Record<string, unknown> = {
         from: env.LEAD_FROM_EMAIL || FROM_DEFAULT,
-        to: env.LEAD_TO_EMAIL,
+        to: toList,
         reply_to: email,
         subject: o.subject,
         html: o.html,
         text: o.text,
       };
+      if (bccList.length) ownerPayload.bcc = bccList;
       if (attachment) ownerPayload.attachments = [attachment];
       delivered = (await sendViaResend(env, ownerPayload)) || delivered;
 

@@ -7,8 +7,9 @@
   // (dashboard-set plaintext vars get wiped on redeploy; secrets do not).
   // RESEND_API_KEY stays a dashboard Secret — never commit it.
   "vars": {
-    // TODO[MATT]: change LEAD_TO_EMAIL to Matt's real inbox before launch.
-    "LEAD_TO_EMAIL": "tyson@bdxomaha.com",
+    // Matt (owner) is the primary recipient; Beardman DX is BCC'd on every lead.
+    // Comma-separate either value to add more recipients.
+    "LEAD_TO_EMAIL": "mw.outback@gmail.com",
     "LEAD_BCC_EMAIL": "marketing@bdxomaha.com"
   },
   "assets": {

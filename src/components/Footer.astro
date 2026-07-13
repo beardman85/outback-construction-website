@@ -67,8 +67,12 @@ const { streetAddress, addressLocality, addressRegion, postalCode } = business.a
       </div>
     </div>
 
-    <div class="mt-12 border-t border-white/10 pt-6 text-xs text-ink-500">
+    <div class="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-ink-500 sm:flex-row sm:items-center sm:justify-between">
       <p>&copy; {year} {business.name}. Owner-operated since {business.foundingYear}. {addressLocality}, {addressRegion}.</p>
+      <div class="flex gap-4">
+        <a href="/privacy-policy" class="hover:text-white">Privacy Policy</a>
+        <a href="/terms" class="hover:text-white">Terms of Service</a>
+      </div>
     </div>
   </div>
 </footer>

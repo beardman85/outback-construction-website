@@ -29,9 +29,9 @@ const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, Astro.site);
 // TODO[MATT]: supply a real default OpenGraph image at public/og-default.jpg (1200×630).
 const ogImageURL = new URL(ogImage, Astro.site);
 
-// TODO[MATT/BUILD]: set the GTM container ID to switch on analytics + Consent Mode v2.
-// Left empty so no broken analytics request is made (protects the Lighthouse budget).
-const GTM_ID = ''; // e.g. 'GTM-XXXXXXX'
+// GTM container — loads GTM + Consent Mode v2 + phone-click / generate_lead events.
+// GA4 (G-TQB6PSPEKT) is configured inside GTM, not here.
+const GTM_ID = 'GTM-N3986WW9';
 ---
 <!doctype html>
 <html lang="en">
@@ -66,11 +66,10 @@ const GTM_ID = ''; // e.g. 'GTM-XXXXXXX'
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('consent', 'default', {
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-          analytics_storage: 'denied',
-          wait_for_update: 500
+          ad_storage: 'granted',
+          ad_user_data: 'granted',
+          ad_personalization: 'granted',
+          analytics_storage: 'granted'
         });
       `} />
     )}

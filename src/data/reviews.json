@@ -1,0 +1,17 @@
+{
+  "featured": [
+    {
+      "quote": "Matt was very professional and returned all calls in an extremely quick fashion. He did everything he said he was going to do and more. The project turned out better than we could have imagined.",
+      "author": "Kim L."
+    },
+    {
+      "quote": "My seawall was repaired in one day with no damage to my sprinkler lines and minimal damage to my lawn.",
+      "author": "K.B."
+    },
+    {
+      "quote": "Matt and his crew did a beautiful job on my seawall. He uses top quality materials, very good at keeping in budget and completed the work as promised.",
+      "author": "Dee M."
+    }
+  ],
+  "_todoMatt": "Reviews page (/reviews) needs all six Google reviews in full, pulled from GBP, first name + last initial. Only these three featured quotes are in content.md."
+}

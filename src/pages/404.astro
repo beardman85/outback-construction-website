@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import business from '../data/business.json';
+import services from '../data/services.json';
+---
+<Base title="Page Not Found | Outback Construction" description="That page drifted off. Find your way back to Outback Construction." noindex={true}>
+  <section class="bg-ink-950 text-white">
+    <div class="mx-auto flex min-h-[70vh] max-w-3xl flex-col items-center justify-center px-4 py-24 text-center lg:px-6">
+      <p class="font-heading text-7xl font-extrabold text-red-600 sm:text-8xl">404</p>
+      <h1 class="mt-4 font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">
+        This page drifted off the dock.
+      </h1>
+      <p class="mt-4 max-w-xl text-lg text-ink-200">
+        The page you're looking for isn't here. Let's get you back to solid ground.
+      </p>
+
+      <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+        <a href="/" class="rounded-md bg-red-600 px-6 py-3 text-base font-bold text-white shadow-lg transition hover:bg-red-700">
+          Back to home
+        </a>
+        <a href={business.telephoneHref} data-phone-cta class="rounded-md border-2 border-white/30 px-6 py-3 text-base font-bold text-white transition hover:bg-white/10">
+          Call Matt: {business.telephoneDisplay}
+        </a>
+      </div>
+
+      <div class="mt-12 w-full border-t border-white/10 pt-8">
+        <p class="text-xs font-bold uppercase tracking-wide text-ink-500">Our services</p>
+        <div class="mt-4 flex flex-wrap justify-center gap-2">
+          {services.map((s) => (
+            <a href={`/services/${s.slug}`} class="rounded-full border border-white/20 px-4 py-2 text-sm font-bold text-white transition hover:border-red-600 hover:bg-red-600">
+              {s.navLabel}
+            </a>
+          ))}
+          <a href="/contact" class="rounded-full border border-white/20 px-4 py-2 text-sm font-bold text-white transition hover:border-red-600 hover:bg-red-600">Contact</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,75 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import CTABlock from '../../components/CTABlock.astro';
+import business from '../../data/business.json';
+import locations from '../../data/locations.json';
+import heroDock from '../../assets/hero-dock.jpg';
+import dockBoat from '../../assets/dock-boat.jpg';
+import dockDawn from '../../assets/dock-dawn.jpg';
+import lakehomeDusk from '../../assets/lakehome-dusk.jpg';
+import pierSunset from '../../assets/pier-sunset.jpg';
+import lakeSunset from '../../assets/lake-sunset.png';
+
+const title = 'Service Areas | Omaha & SE Nebraska Lakes | Outback Construction';
+// TODO[MATT]: review this meta description (content.md gave no /service-areas index copy).
+const description =
+  'Outback Construction serves Omaha metro & Southeast Nebraska lake communities — Valley, Waterloo, Fremont, Bennington, Springfield, Beaver Lake & more. Since 1999.';
+
+const thumbs: Record<string, ImageMetadata> = {
+  omaha: dockBoat,
+  valley: heroDock,
+  waterloo: dockDawn,
+  fremont: lakehomeDusk,
+  bennington: pierSunset,
+  springfield: lakeSunset,
+  plattsmouth: heroDock,
+};
+
+const pageUrl = `${business.url}/service-areas`;
+const breadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: business.url },
+    { '@type': 'ListItem', position: 2, name: 'Service Areas', item: pageUrl },
+  ],
+};
+---
+<Base title={title} description={description} canonicalPath="/service-areas" schemaGraph={[breadcrumb]}>
+  <section class="relative isolate flex min-h-[45vh] items-end overflow-hidden bg-ink-950 text-white">
+    <Image src={lakeSunset} alt="" aria-hidden="true" class="absolute inset-0 -z-20 h-full w-full object-cover opacity-70" widths={[768, 1200, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950 via-ink-950/75 to-ink-950/40"></div>
+    <div class="mx-auto w-full max-w-7xl px-4 py-14 lg:px-6 lg:py-20">
+      <p class="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-red-500">
+        <span class="inline-block h-px w-8 bg-red-500"></span>
+        Service Areas
+      </p>
+      <h1 class="mt-3 max-w-3xl font-heading text-4xl font-extrabold leading-[1.08] tracking-tight drop-shadow sm:text-5xl">
+        Serving Omaha and Southeast Nebraska's lake communities
+      </h1>
+      <p class="mt-4 max-w-2xl text-lg text-ink-100">
+        From the sandpit lakes of Valley and Waterloo to Woodcliff, Beaver Lake, and lakefront
+        properties across the Omaha metro — if your property touches the water, we can help.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 lg:px-6">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {locations.map((l, i) => (
+          <a href={`/locations/${l.slug}`} data-reveal style={`--reveal-delay:${i * 60}ms`} class="group relative block overflow-hidden rounded-xl">
+            <Image src={thumbs[l.slug] ?? heroDock} alt={`Marine construction in ${l.navLabel}, Nebraska`} class="aspect-[3/2] w-full object-cover transition duration-500 group-hover:scale-105" widths={[400, 800]} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/20 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 p-5">
+              <h2 class="font-heading text-xl font-bold text-white">{l.navLabel}</h2>
+              <span class="mt-1 inline-flex items-center gap-1 text-sm font-bold text-red-400">Marine construction here <span class="transition-transform group-hover:translate-x-1">→</span></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABlock heading="Not sure if you're in our area?" body="If your property touches the water in the Omaha metro or Southeast Nebraska, give Matt a call." />
+</Base>

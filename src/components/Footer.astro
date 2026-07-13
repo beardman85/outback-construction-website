@@ -1,0 +1,74 @@
+---
+import business from '../data/business.json';
+import services from '../data/services.json';
+import locations from '../data/locations.json';
+
+const year = new Date().getFullYear();
+const { streetAddress, addressLocality, addressRegion, postalCode } = business.address;
+---
+<footer class="mt-20 border-t border-white/10 bg-ink-950 text-white">
+  <div class="mx-auto max-w-7xl px-4 py-14 lg:px-6">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <!-- NAP block (from business.json — never hardcoded) -->
+      <div>
+        <img src="/brand/logo-white.png" alt={business.name} width="200" height="49" class="h-11 w-auto" />
+        <p class="mt-4 max-w-xs text-sm text-ink-300">{business.tagline}</p>
+        <address class="mt-4 space-y-1 text-sm not-italic text-ink-300">
+          <div>{streetAddress}</div>
+          <div>{addressLocality}, {addressRegion} {postalCode}</div>
+          <div>
+            <a href={business.telephoneHref} data-phone-cta class="font-bold text-white hover:text-red-500">
+              {business.telephoneDisplay}
+            </a>
+          </div>
+          <div>
+            <a href={`mailto:${business.email}`} class="hover:text-red-500">{business.email}</a>
+          </div>
+        </address>
+      </div>
+
+      <!-- Services -->
+      <nav aria-label="Services">
+        <h2 class="text-sm font-bold uppercase tracking-wide text-red-500">Services</h2>
+        <ul class="mt-4 space-y-2 text-sm">
+          {services.map((s) => (
+            <li><a href={`/services/${s.slug}`} class="text-ink-300 hover:text-white">{s.navLabel}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Service Areas -->
+      <nav aria-label="Service areas">
+        <h2 class="text-sm font-bold uppercase tracking-wide text-red-500">Service Areas</h2>
+        <ul class="mt-4 space-y-2 text-sm">
+          {locations.map((l) => (
+            <li><a href={`/locations/${l.slug}`} class="text-ink-300 hover:text-white">{l.navLabel}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Company + CTA -->
+      <div>
+        <nav aria-label="Company">
+          <h2 class="text-sm font-bold uppercase tracking-wide text-red-500">Company</h2>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><a href="/our-work" class="text-ink-300 hover:text-white">Our Work</a></li>
+            <li><a href="/reviews" class="text-ink-300 hover:text-white">Reviews</a></li>
+            <li><a href="/about" class="text-ink-300 hover:text-white">About</a></li>
+            <li><a href="/contact" class="text-ink-300 hover:text-white">Contact</a></li>
+          </ul>
+        </nav>
+        <a
+          href="/contact"
+          class="mt-6 inline-block rounded-md bg-red-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-red-700"
+        >
+          {business.cta.button}
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-white/10 pt-6 text-xs text-ink-500">
+      <p>&copy; {year} {business.name}. Owner-operated since {business.foundingYear}. {addressLocality}, {addressRegion}.</p>
+    </div>
+  </div>
+</footer>

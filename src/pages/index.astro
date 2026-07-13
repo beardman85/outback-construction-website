@@ -1,0 +1,335 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import ReviewStrip from '../components/ReviewStrip.astro';
+import ServiceIcon from '../components/ServiceIcon.astro';
+import business from '../data/business.json';
+import services from '../data/services.json';
+import locations from '../data/locations.json';
+import reviews from '../data/reviews.json';
+import heroDock from '../assets/hero-dock.jpg';
+import lakehomeDusk from '../assets/lakehome-dusk.jpg';
+import dockBoat from '../assets/dock-boat.jpg';
+import dockDawn from '../assets/dock-dawn.jpg';
+import pierSunset from '../assets/pier-sunset.jpg';
+import lakeSunset from '../assets/lake-sunset.png';
+
+const title = 'Marine Construction Contractor | Omaha & SE Nebraska | Outback Construction';
+const description =
+  'Boat docks, seawalls, retaining walls & beach reclamation for Nebraska lakefront properties. Owner-operated since 1999. 5.0★ rated. Call (402) 456-7968.';
+
+const businessId = `${business.url}/#business`;
+const reviewSchema = reviews.featured.map((r) => ({
+  '@type': 'Review',
+  author: { '@type': 'Person', name: r.author },
+  reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+  reviewBody: r.quote,
+  itemReviewed: { '@id': businessId },
+}));
+
+// Stats — every value is grounded in approved copy (founding 1999, "more than
+// 25 years", 5.0 Google, 5 services). Nothing invented.
+const stats = [
+  { value: '1999', label: 'Serving Nebraska lakes', static: true },
+  { value: 25, suffix: '+', label: 'Years on the water' },
+  { value: 5, decimals: 1, suffix: '★', label: 'Rated on Google' },
+  { value: 5, label: 'Marine specialties' },
+];
+
+const whyBlocks = [
+  { title: 'Straight answers.', body: 'An assessment from Outback is an honest read on your shoreline — not a sales pitch.' },
+  { title: 'We answer the phone.', body: "Clear communication from first call to final walkthrough. It shouldn't be rare in this business, but it is." },
+  { title: 'Built for this water.', body: 'Every wall, dock, and beach is designed for the specific conditions of Nebraska sandpit lakes: sandy soils, ice heave, boat wake, and spring water swings.' },
+];
+
+// TODO[MATT]: these are representative stock photos, NOT Outback projects.
+// Replace the /our-work gallery with 6–12 real before/after project photos + lake names.
+const gallery = [
+  { img: heroDock, alt: 'Composite boat dock at sunset on a Nebraska lake' },
+  { img: dockBoat, alt: 'New wood dock with a moored boat on a clear-water sandpit lake' },
+  { img: lakehomeDusk, alt: 'Lakefront home protected by a seawall and rip-rap shoreline at dusk' },
+  { img: pierSunset, alt: 'Wooden pier reaching into a golden sunset over the lake' },
+];
+---
+<Base title={title} description={description} canonicalPath="/" schemaGraph={reviewSchema}>
+  <!-- ================= HERO ================= -->
+  <section class="relative isolate flex min-h-[70vh] items-center overflow-hidden bg-ink-950 text-white">
+    <Image
+      src={heroDock}
+      alt="A finished composite boat dock at sunset on a Southeast Nebraska lake, built by Outback Construction"
+      class="animate-kenburns absolute inset-0 -z-20 h-full w-full object-cover"
+      widths={[768, 1200, 1600]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-r from-black/90 via-black/70 to-black/25"></div>
+    <div class="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-ink-950 to-transparent"></div>
+
+    <div class="mx-auto w-full max-w-7xl px-4 py-20 lg:px-6">
+      <div class="max-w-3xl">
+        <p data-reveal class="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-red-500">
+          <span class="inline-block h-px w-8 bg-red-500"></span>
+          Marine Construction · Since 1999
+        </p>
+        <h1 data-reveal style="--reveal-delay:80ms" class="font-heading text-4xl font-extrabold leading-[1.05] tracking-tight drop-shadow sm:text-5xl lg:text-6xl">
+          Protect Your Shoreline. <span class="text-red-500">Protect Your Investment.</span>
+        </h1>
+        <p data-reveal style="--reveal-delay:160ms" class="mt-6 max-w-2xl text-lg text-ink-100 drop-shadow">
+          Outback Construction has built and repaired boat docks, seawalls, and retaining walls on
+          Southeast Nebraska lakes since 1999. Owner-operated, built with premium materials, and
+          engineered to outlast Nebraska weather.
+        </p>
+        <div data-reveal style="--reveal-delay:240ms" class="mt-8 flex flex-col gap-4 sm:flex-row">
+          <a href="/contact" class="rounded-md bg-red-600 px-6 py-3 text-center text-base font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-red-700">
+            {business.cta.button}
+          </a>
+          <a href={business.telephoneHref} data-phone-cta class="rounded-md border-2 border-white/70 px-6 py-3 text-center text-base font-bold text-white transition hover:bg-white/10">
+            Call Matt: {business.telephoneDisplay}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- scroll cue -->
+    <a href="#problem" aria-label="Scroll to content" class="absolute bottom-6 left-1/2 -z-0 hidden -translate-x-1/2 text-white/70 hover:text-white lg:block">
+      <svg class="animate-bob h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M6 9l6 6 6-6" />
+      </svg>
+    </a>
+
+    <!-- brand accent bar -->
+    <div class="absolute inset-x-0 bottom-0 z-10 flex h-1.5">
+      <span class="w-1/4 bg-red-600"></span>
+      <span class="flex-1 bg-white/90"></span>
+      <span class="w-1/3 bg-red-600"></span>
+    </div>
+  </section>
+
+  <!-- ================= STAT BAND ================= -->
+  <section class="bg-ink-950 text-white">
+    <div class="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 lg:grid-cols-4 lg:px-6">
+      {stats.map((s, i) => (
+        <div data-reveal style={`--reveal-delay:${i * 90}ms`} class="border-l-2 border-red-600 pl-4">
+          <div class="font-heading text-4xl font-extrabold tracking-tight sm:text-5xl">
+            {s.static ? (
+              <span>{s.value}</span>
+            ) : (
+              <span data-countup={s.value} data-decimals={s.decimals ?? 0} data-suffix={s.suffix ?? ''}>0{s.suffix ?? ''}</span>
+            )}
+          </div>
+          <div class="mt-1 text-sm font-semibold uppercase tracking-wide text-ink-300">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ================= STATEMENT BAND ================= -->
+  <section class="bg-red-600 text-white">
+    <div class="mx-auto max-w-5xl px-4 py-12 text-center lg:px-6">
+      <p data-reveal class="font-heading text-2xl font-bold tracking-tight sm:text-3xl">
+        Talk directly with Matt — <span class="text-white/80">honest answers, no pressure.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= THE PROBLEM ================= -->
+  <section id="problem" class="relative isolate overflow-hidden bg-ink-950 text-white">
+    <Image
+      src={dockDawn}
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 -z-20 h-full w-full object-cover object-center opacity-60"
+      widths={[768, 1200, 1600]}
+      sizes="100vw"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-r from-ink-950 via-ink-950/90 to-ink-950/40"></div>
+    <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950 via-transparent to-ink-950/60"></div>
+
+    <div class="mx-auto max-w-7xl px-4 py-24 lg:px-6 lg:py-28">
+      <div class="max-w-2xl">
+        <h2 data-reveal class="font-heading text-3xl font-extrabold leading-tight tracking-tight drop-shadow sm:text-4xl">
+          Waterfront problems <span class="text-red-500">don't fix themselves.</span>
+        </h2>
+        <div class="mt-8 space-y-6 text-lg text-ink-100">
+          <p data-reveal>
+            A leaning retaining wall. A shoreline that gives up a little more ground every spring. A
+            dock that's seen better days. On Nebraska's sandpit lakes, small waterfront issues don't
+            stay small — <span class="font-bold text-white">wave action, ice, and spring high water turn them into expensive emergencies.</span>
+          </p>
+          <p data-reveal style="--reveal-delay:100ms" class="border-l-2 border-red-600 pl-5 text-xl font-bold text-white">
+            And around here, the hardest part is often just finding a marine contractor who returns your call.
+          </p>
+          <p data-reveal style="--reveal-delay:180ms" class="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+            That's not how we work. When you call Outback, <span class="font-bold text-red-400">you talk to Matt.</span>
+            You get an honest assessment of what needs attention now, what can wait, and what it takes to
+            do the job right. Then you get a crew that shows up when they said they would.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-20 lg:px-6">
+      <h2 data-reveal class="font-heading text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl">
+        Marine construction is all we do.
+      </h2>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((s, i) => (
+          <a
+            href={`/services/${s.slug}`}
+            data-reveal
+            style={`--reveal-delay:${i * 70}ms`}
+            class="group relative flex flex-col overflow-hidden rounded-xl border border-ink-200 bg-white p-6 transition hover:-translate-y-1 hover:border-red-600 hover:shadow-xl"
+          >
+            <span class="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-red-600 transition-transform duration-300 group-hover:scale-x-100"></span>
+            <span class="flex h-14 w-14 items-center justify-center rounded-lg bg-ink-950 text-red-500 transition group-hover:bg-red-600 group-hover:text-white">
+              <ServiceIcon slug={s.slug} class="h-7 w-7" />
+            </span>
+            <h3 class="mt-5 font-heading text-xl font-bold text-ink-900">{s.cardTitle}</h3>
+            <p class="mt-3 flex-1 text-ink-700">{s.cardBlurb}</p>
+            <span class="mt-5 inline-flex items-center gap-1 text-sm font-bold text-red-600">
+              Learn more
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURE PANEL / WHY ================= -->
+  <section class="bg-ink-50">
+    <div class="mx-auto max-w-7xl px-4 py-20 lg:px-6">
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div data-reveal class="relative">
+          <Image
+            src={lakehomeDusk}
+            alt="A lakefront home at dusk, protected by a seawall and rip-rap shoreline built to hold the bank above the water"
+            class="aspect-[4/3] w-full rounded-2xl object-cover shadow-2xl"
+            widths={[600, 900, 1200]}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            loading="lazy"
+          />
+          <!-- overlapping trust badge -->
+          <div class="absolute -bottom-6 -right-4 flex h-28 w-28 flex-col items-center justify-center rounded-full bg-red-600 text-center text-white shadow-xl sm:-right-6">
+            <span class="font-heading text-2xl font-extrabold leading-none">1999</span>
+            <span class="mt-1 text-[10px] font-bold uppercase tracking-wide">Owner<br />Operated</span>
+          </div>
+        </div>
+
+        <div>
+          <h2 data-reveal class="font-heading text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl">
+            Owner-operated since 1999. On your shoreline, not in an office.
+          </h2>
+          <div class="mt-6 space-y-5 text-lg text-ink-700">
+            <p data-reveal>Docks, seawalls, retaining walls, barge work, and beach reclamation are specialized work — the equipment, the engineering, and the judgment come from years on the water, not from general contracting. Matt Wesch has been building on Nebraska lakefronts for more than 25 years, and he's on your project personally.</p>
+            <p data-reveal>We'll tell you the truth. If a repair can wait a season, we'll say so. If it can't, we'll show you why. We use premium materials because on the water, cheap materials fail — and we stand behind every job we finish. Ask around your lake.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 grid gap-6 md:grid-cols-3">
+        {whyBlocks.map((b, i) => (
+          <div data-reveal style={`--reveal-delay:${i * 90}ms`} class="rounded-xl border border-ink-200 border-t-4 border-t-red-600 bg-white p-6">
+            <h3 class="font-heading text-lg font-bold text-ink-900">{b.title}</h3>
+            <p class="mt-2 text-ink-700">{b.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORK GALLERY (interactive) ================= -->
+  <!-- TODO[MATT]: representative stock imagery — replace with real before/after project photos + lake names on /our-work. -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-20 lg:px-6">
+      <div data-reveal class="flex flex-wrap items-end justify-between gap-4">
+        <h2 class="font-heading text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl">See our work</h2>
+        <a href="/our-work" class="inline-flex items-center gap-1 font-bold text-red-600 hover:text-red-700">
+          View the gallery <span>→</span>
+        </a>
+      </div>
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {gallery.map((g, i) => (
+          <a href="/our-work" data-reveal style={`--reveal-delay:${i * 80}ms`} class="group relative block overflow-hidden rounded-xl">
+            <Image
+              src={g.img}
+              alt={g.alt}
+              class="aspect-[3/4] w-full object-cover transition duration-700 group-hover:scale-110"
+              widths={[300, 500]}
+              sizes="(min-width: 1024px) 25vw, 50vw"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/10 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 translate-y-2 p-4 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+              <span class="inline-flex items-center gap-1 text-sm font-bold text-white">View project <span>→</span></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REVIEWS ================= -->
+  <ReviewStrip />
+
+  <!-- ================= SERVICE AREA ================= -->
+  <section class="mx-auto max-w-4xl px-4 py-20 text-center lg:px-6">
+    <h2 data-reveal class="font-heading text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl">
+      Serving Omaha and Southeast Nebraska's lake communities
+    </h2>
+    <p data-reveal class="mx-auto mt-6 max-w-2xl text-lg text-ink-700">
+      From the sandpit lakes of Valley and Waterloo to Woodcliff, Beaver Lake, and lakefront
+      properties across the Omaha metro — if your property touches the water, we can help.
+    </p>
+    <div data-reveal class="mt-8 flex flex-wrap justify-center gap-3">
+      {locations.map((l) => (
+        <a
+          href={`/locations/${l.slug}`}
+          class="rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-bold text-ink-800 transition hover:border-red-600 hover:bg-red-600 hover:text-white"
+        >
+          {l.navLabel}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA (photo band) ================= -->
+  <section class="relative isolate overflow-hidden text-white">
+    <Image
+      src={lakeSunset}
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 -z-20 h-full w-full object-cover"
+      widths={[768, 1200, 1600]}
+      sizes="100vw"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 -z-10 bg-red-700/85 mix-blend-multiply"></div>
+    <div class="absolute inset-0 -z-10 bg-ink-950/40"></div>
+    <div class="mx-auto max-w-4xl px-4 py-20 text-center lg:px-6">
+      <h2 data-reveal class="font-heading text-2xl font-extrabold tracking-tight sm:text-4xl">
+        Storm damage? Spring inspection? Planning ahead?
+      </h2>
+      <p data-reveal class="mx-auto mt-4 max-w-2xl text-lg text-white/90">
+        Get experienced eyes on your shoreline before a small problem becomes a big one.
+      </p>
+      <p data-reveal class="mt-3 text-sm text-white/80">{business.cta.supportLine}</p>
+      <div data-reveal class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="/contact" class="w-full rounded-md bg-white px-6 py-3 text-base font-bold text-red-700 shadow-lg transition hover:-translate-y-0.5 hover:bg-ink-100 sm:w-auto">
+          {business.cta.button}
+        </a>
+        <a href={business.telephoneHref} data-phone-cta class="w-full rounded-md border-2 border-white px-6 py-3 text-base font-bold text-white transition hover:bg-white/10 sm:w-auto">
+          Call {business.telephoneDisplay}
+        </a>
+      </div>
+      <p data-reveal class="mt-4 text-sm text-white/80">
+        <a href={`mailto:${business.email}`} class="underline hover:text-white">{business.email}</a>
+      </p>
+    </div>
+  </section>
+</Base>

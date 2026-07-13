@@ -27,3 +27,6 @@ pnpm-debug.log*
 
 # Cloudflare
 .wrangler/
+
+# local editor/tooling config (machine-specific)
+.claude/

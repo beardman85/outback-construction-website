@@ -1,0 +1,58 @@
+{
+  "name": "Outback Construction LLC",
+  "shortName": "Outback Construction",
+  "owner": "Matt Wesch",
+  "foundingYear": 1999,
+  "schemaType": "GeneralContractor",
+  "tagline": "Marine construction contractor serving Omaha and Southeast Nebraska lakefront communities since 1999.",
+  "url": "https://outbackconstruction.net",
+  "telephoneDisplay": "(402) 456-7968",
+  "telephoneHref": "tel:+14024567968",
+  "telephoneSchema": "+1-402-456-7968",
+  "email": "hello@outbackconstruction.net",
+  "address": {
+    "streetAddress": "1439 Co Rd S",
+    "addressLocality": "Colon",
+    "addressRegion": "NE",
+    "postalCode": "68018",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "latitude": 41.34667,
+    "longitude": -96.60972,
+    "_todoMatt": "Confirm exact business geo-coordinates. Approximate Colon, NE center used."
+  },
+  "rating": {
+    "value": "5.0",
+    "reviewCount": 6,
+    "displayText": "5.0 on Google",
+    "showReviewCountInUi": false
+  },
+  "serviceArea": {
+    "summary": "Omaha Metro & Southeast Nebraska lakes",
+    "cities": [
+      "Omaha",
+      "Valley",
+      "Waterloo",
+      "Venice",
+      "Fremont",
+      "Bennington",
+      "Springfield",
+      "Plattsmouth",
+      "Beaver Lake"
+    ],
+    "note": "and surrounding lakefront communities"
+  },
+  "cta": {
+    "button": "Get a Shoreline Assessment",
+    "supportLine": "Talk directly with Matt — honest answers, no pressure."
+  },
+  "sameAs": [],
+  "openingHoursSpecification": [],
+  "_todoMatt": [
+    "sameAs: add Google Business Profile (Maps) URL and Facebook URL.",
+    "openingHoursSpecification: confirm business hours for LocalBusiness schema.",
+    "geo: confirm exact coordinates (approximate Colon, NE used).",
+    "rating.reviewCount (6) is used in schema only; UI shows '5.0 on Google' with no count per content.md. Confirm count as reviews grow."
+  ]
+}

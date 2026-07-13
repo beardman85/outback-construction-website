@@ -1,0 +1,177 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import CTABlock from '../components/CTABlock.astro';
+import services from '../data/services.json';
+import heroDock from '../assets/hero-dock.jpg';
+import dockBoat from '../assets/dock-boat.jpg';
+import lakehomeDusk from '../assets/lakehome-dusk.jpg';
+import lakeSunset from '../assets/lake-sunset.png';
+import pierSunset from '../assets/pier-sunset.jpg';
+import dockDawn from '../assets/dock-dawn.jpg';
+
+const title = 'Our Work | Docks, Seawalls & Shorelines | Outback Construction';
+// TODO[MATT]: review this meta description (content.md gave no /our-work copy).
+const description =
+  "See Outback Construction's marine work across Southeast Nebraska lakes — boat docks, seawalls, retaining walls, beaches & barge projects. Owner-operated since 1999.";
+
+// TODO[MATT]: THESE ARE STOCK PLACEHOLDERS, not Outback projects. Replace with
+// 6–12 real before/after project photos and add the lake name to each `lake`.
+// Ideal: pair a before + after image per project.
+const projects = [
+  { img: heroDock, category: 'boat-docks', title: 'Composite dock build', lake: '' },
+  { img: dockBoat, category: 'boat-docks', title: 'New dock & moorage', lake: '' },
+  { img: lakehomeDusk, category: 'seawalls', title: 'Seawall & shoreline protection', lake: '' },
+  { img: lakeSunset, category: 'retaining-walls', title: 'Rip-rap shoreline & retaining', lake: '' },
+  { img: pierSunset, category: 'beach-reclamation', title: 'Rebuilt beach & pier', lake: '' },
+  { img: dockDawn, category: 'barge-work', title: 'Water-access dredging', lake: '' },
+];
+
+const filters = [{ slug: 'all', label: 'All projects' }, ...services.map((s) => ({ slug: s.slug, label: s.navLabel }))];
+const labelFor = (slug: string) => services.find((s) => s.slug === slug)?.navLabel ?? '';
+---
+<Base title={title} description={description} canonicalPath="/our-work">
+  <!-- ================= HERO ================= -->
+  <section class="relative isolate flex min-h-[45vh] items-end overflow-hidden bg-ink-950 text-white">
+    <Image src={dockBoat} alt="Marine construction work on a Southeast Nebraska lake by Outback Construction" class="absolute inset-0 -z-20 h-full w-full object-cover" widths={[768, 1200, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950 via-ink-950/70 to-ink-950/30"></div>
+    <div class="mx-auto w-full max-w-7xl px-4 py-14 lg:px-6 lg:py-20">
+      <p class="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-red-500">
+        <span class="inline-block h-px w-8 bg-red-500"></span>
+        Our Work
+      </p>
+      <h1 class="mt-3 max-w-3xl font-heading text-4xl font-extrabold leading-[1.08] tracking-tight drop-shadow sm:text-5xl">
+        Built on Nebraska shorelines
+      </h1>
+      <p class="mt-4 max-w-2xl text-lg text-ink-100">
+        Boat docks, seawalls, retaining walls, beaches, and barge projects across Southeast Nebraska's lakes.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY ================= -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 lg:px-6">
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-2" role="group" aria-label="Filter projects by service">
+        {filters.map((f, i) => (
+          <button
+            type="button"
+            data-filter={f.slug}
+            data-active={i === 0 ? 'true' : 'false'}
+            class="rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-bold text-ink-800 transition hover:border-red-600 hover:text-red-600"
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
+
+      <!-- Grid -->
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((p, i) => (
+          <button
+            type="button"
+            data-gallery-item
+            data-category={p.category}
+            data-index={i}
+            data-caption={`${p.title}${p.lake ? ' — ' + p.lake : ''}`}
+            class="group relative block overflow-hidden rounded-xl text-left"
+          >
+            <Image src={p.img} alt={`${p.title} — ${labelFor(p.category)} by Outback Construction`} class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" widths={[400, 800, 1200]} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-transparent to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 p-4">
+              <span class="text-xs font-bold uppercase tracking-wide text-red-400">{labelFor(p.category)}</span>
+              <p class="font-heading font-bold text-white">{p.title}</p>
+              {!p.lake && <span class="text-xs text-white/60">TODO[MATT]: add lake name</span>}
+            </div>
+            <span class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-ink-900 opacity-0 transition group-hover:opacity-100" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" /></svg>
+            </span>
+          </button>
+        ))}
+      </div>
+
+      <p data-empty class="mt-10 hidden text-center text-ink-500">No projects in this category yet.</p>
+    </div>
+  </section>
+
+  <CTABlock heading="Want your shoreline on this page?" body="Get experienced eyes on your waterfront — and a straight assessment from Matt." />
+
+  <!-- Lightbox -->
+  <dialog id="lightbox" class="m-auto w-full max-w-5xl bg-transparent p-0 backdrop:bg-black/80" aria-label="Project image viewer">
+    <div class="relative">
+      <img id="lb-img" src="" alt="" class="max-h-[80vh] w-full rounded-lg object-contain" />
+      <p id="lb-caption" class="mt-3 text-center text-sm font-semibold text-white"></p>
+      <button type="button" data-lb-close aria-label="Close" class="absolute -top-3 right-0 flex h-10 w-10 items-center justify-center rounded-full bg-white text-ink-900 shadow-lg sm:-right-3">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12" /></svg>
+      </button>
+      <button type="button" data-lb-prev aria-label="Previous" class="absolute left-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-ink-900 shadow-lg hover:bg-white">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6" /></svg>
+      </button>
+      <button type="button" data-lb-next aria-label="Next" class="absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-ink-900 shadow-lg hover:bg-white">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6" /></svg>
+      </button>
+    </div>
+  </dialog>
+
+  <style is:inline>
+    [data-filter][data-active='true'] {
+      background: var(--color-red-600);
+      color: #fff;
+      border-color: var(--color-red-600);
+    }
+  </style>
+  <script is:inline>
+    (function () {
+      var items = Array.prototype.slice.call(document.querySelectorAll('[data-gallery-item]'));
+      var dialog = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lb-img');
+      var lbCap = document.getElementById('lb-caption');
+      var empty = document.querySelector('[data-empty]');
+      var current = 0;
+
+      function visibleItems() {
+        return items.filter(function (it) { return !it.classList.contains('hidden'); });
+      }
+      function render() {
+        var el = items[current];
+        var img = el.querySelector('img');
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt;
+        lbCap.textContent = el.getAttribute('data-caption');
+      }
+      function openAt(i) { current = i; render(); if (dialog.showModal) dialog.showModal(); }
+      function move(dir) {
+        var vis = visibleItems();
+        if (!vis.length) return;
+        var pos = vis.indexOf(items[current]);
+        if (pos === -1) pos = 0;
+        var n = (pos + dir + vis.length) % vis.length;
+        current = items.indexOf(vis[n]);
+        render();
+      }
+
+      items.forEach(function (it, i) { it.addEventListener('click', function () { openAt(i); }); });
+      dialog.querySelector('[data-lb-close]').addEventListener('click', function () { dialog.close(); });
+      dialog.querySelector('[data-lb-prev]').addEventListener('click', function () { move(-1); });
+      dialog.querySelector('[data-lb-next]').addEventListener('click', function () { move(1); });
+      dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+      dialog.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') move(-1);
+        if (e.key === 'ArrowRight') move(1);
+      });
+
+      var filterBtns = Array.prototype.slice.call(document.querySelectorAll('[data-filter]'));
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var f = btn.getAttribute('data-filter');
+          filterBtns.forEach(function (b) { b.setAttribute('data-active', b === btn ? 'true' : 'false'); });
+          items.forEach(function (it) {
+            it.classList.toggle('hidden', f !== 'all' && it.getAttribute('data-category') !== f);
+          });
+          if (empty) empty.classList.toggle('hidden', visibleItems().length > 0);
+        });
+      });
+    })();
+  </script>
+</Base>

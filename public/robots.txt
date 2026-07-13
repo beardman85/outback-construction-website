@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://outbackconstruction.net/sitemap-index.xml

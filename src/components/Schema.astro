@@ -1,0 +1,62 @@
+---
+/**
+ * Schema.astro — JSON-LD injector. One @graph per page.
+ * Always emits the LocalBusiness (GeneralContractor) node from business.json.
+ * Pages pass page-specific nodes (Service, FAQPage, BreadcrumbList, Review, WebPage)
+ * via the `graph` prop; they are merged into the single @graph.
+ */
+import business from '../data/business.json';
+
+interface Props {
+  /** Extra JSON-LD nodes for this page (Service, FAQPage, BreadcrumbList, …). */
+  graph?: Record<string, unknown>[];
+}
+
+const { graph = [] } = Astro.props;
+
+export const businessId = `${business.url}/#business`;
+
+const localBusiness: Record<string, unknown> = {
+  '@type': business.schemaType,
+  '@id': businessId,
+  name: business.name,
+  url: business.url,
+  telephone: business.telephoneSchema,
+  email: business.email,
+  foundingDate: String(business.foundingYear),
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: business.address.streetAddress,
+    addressLocality: business.address.addressLocality,
+    addressRegion: business.address.addressRegion,
+    postalCode: business.address.postalCode,
+    addressCountry: business.address.addressCountry,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: business.geo.latitude,
+    longitude: business.geo.longitude,
+  },
+  areaServed: business.serviceArea.cities.map((c) => ({ '@type': 'City', name: c })),
+};
+
+// aggregateRating: ratingValue shown in UI; reviewCount used in schema only.
+if (business.rating?.value) {
+  localBusiness.aggregateRating = {
+    '@type': 'AggregateRating',
+    ratingValue: business.rating.value,
+    reviewCount: business.rating.reviewCount,
+  };
+}
+// Only emit when populated (TODO[MATT]: fill sameAs / hours in business.json).
+if (business.sameAs?.length) localBusiness.sameAs = business.sameAs;
+if (business.openingHoursSpecification?.length) {
+  localBusiness.openingHoursSpecification = business.openingHoursSpecification;
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [localBusiness, ...graph],
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />

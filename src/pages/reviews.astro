@@ -1,0 +1,104 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import CTABlock from '../components/CTABlock.astro';
+import business from '../data/business.json';
+import reviews from '../data/reviews.json';
+import lakeSunset from '../assets/lake-sunset.png';
+
+const title = 'Reviews | Outback Construction | 5.0★ Marine Contractor';
+// TODO[MATT]: review this meta description (content.md gave the title only).
+const description =
+  'Read what Nebraska lakefront homeowners say about Outback Construction — 5.0★ on Google. Owner-operated marine construction since 1999.';
+
+const businessId = `${business.url}/#business`;
+const reviewSchema = reviews.featured.map((r) => ({
+  '@type': 'Review',
+  author: { '@type': 'Person', name: r.author },
+  reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+  reviewBody: r.quote,
+  itemReviewed: { '@id': businessId },
+}));
+
+// TODO[MATT/BUILD]: generate the direct g.page / write-review short link. Until
+// then this points to the business on Google Maps as a functional fallback.
+const reviewLink = 'https://www.google.com/maps/search/?api=1&query=Outback+Construction+Colon+NE';
+---
+<Base title={title} description={description} canonicalPath="/reviews" schemaGraph={reviewSchema}>
+  <!-- ================= HERO ================= -->
+  <section class="relative isolate flex min-h-[45vh] items-end overflow-hidden bg-ink-950 text-white">
+    <Image
+      src={lakeSunset}
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 -z-20 h-full w-full object-cover opacity-70"
+      widths={[768, 1200, 1600]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950 via-ink-950/75 to-ink-950/40"></div>
+    <div class="mx-auto w-full max-w-7xl px-4 py-14 lg:px-6 lg:py-20">
+      <p class="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-red-500">
+        <span class="inline-block h-px w-8 bg-red-500"></span>
+        Reviews
+      </p>
+      <h1 class="mt-3 max-w-3xl font-heading text-4xl font-extrabold leading-[1.08] tracking-tight drop-shadow sm:text-5xl">
+        What Lakefront Homeowners Say About Outback
+      </h1>
+      <div class="mt-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5">
+        <span class="text-red-500" aria-hidden="true">★★★★★</span>
+        <span class="text-sm font-bold">{business.rating.displayText}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REVIEWS ================= -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-6xl px-4 py-16 lg:px-6">
+      <div class="grid gap-6 md:grid-cols-2">
+        {reviews.featured.map((r, i) => (
+          <figure
+            data-reveal
+            style={`--reveal-delay:${i * 80}ms`}
+            class="group relative flex h-full flex-col rounded-2xl border border-ink-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:border-red-200 hover:shadow-xl"
+          >
+            <span aria-hidden="true" class="pointer-events-none absolute right-6 top-4 font-heading text-6xl leading-none text-red-600/15">&rdquo;</span>
+            <span class="text-red-600" aria-hidden="true">★★★★★</span>
+            <blockquote class="mt-4 flex-1 text-lg text-ink-700"><p>&ldquo;{r.quote}&rdquo;</p></blockquote>
+            <figcaption class="mt-6 flex items-center gap-3 border-t border-ink-100 pt-4">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-ink-950 text-sm font-bold text-white">{r.author.charAt(0)}</span>
+              <span class="text-sm font-bold text-ink-900">{r.author}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <Fragment set:html={`<!-- TODO[MATT]: display all six Google reviews in full — pull the remaining reviews from the Google Business Profile, first name + last initial. -->`} />
+
+    </div>
+  </section>
+
+  <!-- ================= LEAVE A REVIEW ================= -->
+  <section class="bg-ink-50">
+    <div class="mx-auto max-w-3xl px-4 py-16 text-center lg:px-6">
+      <h2 data-reveal class="font-heading text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl">
+        Worked with us? It means more than you know.
+      </h2>
+      <p data-reveal class="mx-auto mt-4 max-w-2xl text-lg text-ink-700">
+        Most of our work comes from lake neighbors talking to lake neighbors. If we've built or
+        repaired something on your shoreline, a Google review is the best thank-you there is.
+      </p>
+      <a
+        data-reveal
+        href={reviewLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-8 inline-flex items-center gap-2 rounded-md bg-red-600 px-6 py-3 text-base font-bold text-white shadow-sm transition hover:bg-red-700"
+      >
+        Leave a Google Review <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <CTABlock heading="Storm damage? Spring inspection? Planning ahead?" body="Get experienced eyes on your shoreline before a small problem becomes a big one." />
+</Base>

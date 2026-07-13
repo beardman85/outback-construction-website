@@ -1,0 +1,32 @@
+---
+import type { FaqItem } from '../data/service-content';
+
+interface Props {
+  faqs: FaqItem[];
+  heading?: string;
+}
+const { faqs, heading = 'Frequently asked questions' } = Astro.props;
+---
+<section class="bg-white">
+  <div class="mx-auto max-w-3xl px-4 py-16 lg:px-6">
+    <h2 data-reveal class="font-heading text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl">
+      {heading}
+    </h2>
+    <div class="mt-8 divide-y divide-ink-200 border-t border-ink-200">
+      {faqs.map((f) => (
+        <details data-reveal class="group py-2">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-heading text-lg font-bold text-ink-900 transition hover:text-red-600 [&::-webkit-details-marker]:hidden">
+            {f.q}
+            <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full border border-ink-200 text-red-600 transition group-open:rotate-45 group-open:border-red-600" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 1v12M1 7h12" /></svg>
+            </span>
+          </summary>
+          <div class="pb-5 pr-10 text-ink-700">
+            <p>{f.a}</p>
+            {f.todo && <Fragment set:html={`<!-- TODO[MATT]: ${f.todo} -->`} />}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

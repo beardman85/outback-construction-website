@@ -1,0 +1,52 @@
+[
+  {
+    "slug": "boat-docks",
+    "navLabel": "Boat Docks",
+    "cardTitle": "Boat Docks",
+    "cardBlurb": "Custom docks built for how your family actually uses the lake — and repairs that add years to the dock you have.",
+    "serviceType": "Boat Dock Construction & Repair",
+    "metaTitle": "Boat Dock Builder | Custom Docks & Repair | Omaha, NE | Outback",
+    "metaDescription": "Custom boat dock construction, installation & repair on Omaha-area and SE Nebraska lakes. Built for wake boats, pontoons & Nebraska winters. Since 1999.",
+    "h1": "Boat Docks Built for the Way You Use the Lake"
+  },
+  {
+    "slug": "seawalls",
+    "navLabel": "Seawalls",
+    "cardTitle": "Seawalls",
+    "cardBlurb": "New seawall construction and storm-damage repair, engineered for Nebraska's freeze-thaw and wave action.",
+    "serviceType": "Seawall Construction & Repair",
+    "metaTitle": "Seawall Construction & Repair | Omaha & SE Nebraska Lakes | Outback",
+    "metaDescription": "Seawall installation, replacement & storm-damage repair for Nebraska lakefront homes. Engineered for ice, wave action & sandy soils. Since 1999. (402) 456-7968.",
+    "h1": "Seawall Construction & Repair for Nebraska Lakes"
+  },
+  {
+    "slug": "retaining-walls",
+    "navLabel": "Retaining Walls",
+    "cardTitle": "Retaining Walls",
+    "cardBlurb": "Waterfront retaining walls that hold their line for decades — and honest evaluations of walls that are starting to lean.",
+    "serviceType": "Retaining Wall Construction & Repair",
+    "metaTitle": "Waterfront Retaining Wall Contractor | Omaha, NE | Outback Construction",
+    "metaDescription": "Retaining wall construction, replacement & repair for lakefront properties in Omaha & SE Nebraska. Fix leaning walls before they fail. Since 1999.",
+    "h1": "Retaining Walls That Hold Their Line"
+  },
+  {
+    "slug": "barge-work",
+    "navLabel": "Barge Work",
+    "cardTitle": "Barge Work",
+    "cardBlurb": "Barge-mounted equipment for projects you can't reach from shore: dredging, heavy material placement, and water-access construction.",
+    "serviceType": "Barge Services & Marine Contracting",
+    "metaTitle": "Barge Services & Marine Contracting | Omaha & SE Nebraska | Outback",
+    "metaDescription": "Barge-mounted construction, dredging & heavy material placement on Nebraska lakes. Water-access projects for lakefront homes & communities. Since 1999.",
+    "h1": "Barge Work: Getting Heavy Equipment Where Trucks Can't Go"
+  },
+  {
+    "slug": "beach-reclamation",
+    "navLabel": "Beach Reclamation",
+    "cardTitle": "Beach Reclamation",
+    "cardBlurb": "Rebuild the beach erosion took. Clean sand, graded right, with the shoreline protection to keep it there.",
+    "serviceType": "Beach Reclamation & Shoreline Restoration",
+    "metaTitle": "Beach Reclamation & Shoreline Restoration | SE Nebraska Lakes | Outback",
+    "metaDescription": "Rebuild your lake beach. Sand replacement, grading & erosion control for Nebraska lakefront properties. Beaches that stay put. Since 1999.",
+    "h1": "Get Your Beach Back"
+  }
+]

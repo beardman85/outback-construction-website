@@ -1,0 +1,133 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import CTABlock from '../components/CTABlock.astro';
+import ReviewStrip from '../components/ReviewStrip.astro';
+import business from '../data/business.json';
+import heroDock from '../assets/hero-dock.jpg';
+import dockBoat from '../assets/dock-boat.jpg';
+
+const title = 'About Outback Construction | Marine Contractor Since 1999 | Colon, NE';
+// TODO[MATT]: review this meta description (content.md gave the title only).
+const description =
+  'Owner-operated marine construction in Colon, NE since 1999 — boat docks, seawalls, retaining walls, beaches & barge work on SE Nebraska lakes.';
+
+const stats = [
+  { value: '1999', label: 'Serving Nebraska lakes', static: true },
+  { value: 25, suffix: '+', label: 'Years on the water' },
+  { value: 5, decimals: 1, suffix: '★', label: 'Rated on Google' },
+  { value: 5, label: 'Marine specialties' },
+];
+
+const steps = [
+  { t: 'Call or send the form.', b: "You'll hear back fast — our reviews mention it because in this industry it's rare." },
+  { t: 'Shoreline assessment.', b: 'Matt looks at the problem, explains what he sees, and tells you what needs doing now, what can wait, and what it costs.' },
+  { t: 'The work.', b: 'Scheduled clearly, done with premium materials, site left clean.' },
+  { t: 'We stand by it.', b: 'Since 1999, on lakes across Southeast Nebraska. Ask your neighbors.' },
+];
+---
+<Base title={title} description={description} canonicalPath="/about">
+  <!-- ================= HERO ================= -->
+  <section class="relative isolate flex min-h-[50vh] items-end overflow-hidden bg-ink-950 text-white">
+    <Image
+      src={heroDock}
+      alt="A boat dock at sunset on a Southeast Nebraska lake built by Outback Construction"
+      class="absolute inset-0 -z-20 h-full w-full object-cover"
+      widths={[768, 1200, 1600]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950 via-ink-950/70 to-ink-950/30"></div>
+    <div class="mx-auto w-full max-w-7xl px-4 py-14 lg:px-6 lg:py-20">
+      <p class="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-red-500">
+        <span class="inline-block h-px w-8 bg-red-500"></span>
+        About
+      </p>
+      <h1 class="mt-3 max-w-3xl font-heading text-4xl font-extrabold leading-[1.08] tracking-tight drop-shadow sm:text-5xl">
+        Built on Nebraska Water Since 1999
+      </h1>
+    </div>
+  </section>
+
+  <!-- ================= INTRO ================= -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-3xl px-4 py-16 lg:px-6">
+      <p data-reveal class="text-xl leading-relaxed text-ink-700">
+        Outback Construction is a marine construction contractor based in Colon, Nebraska, owned and
+        operated by Matt Wesch. Since 1999, we've done one thing: build and repair the structures
+        where Nebraska properties meet the water — boat docks, seawalls, retaining walls, beaches,
+        and the barge work that makes hard-to-reach projects possible.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= STAT BAND ================= -->
+  <section class="bg-ink-950 text-white">
+    <div class="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 lg:grid-cols-4 lg:px-6">
+      {stats.map((s, i) => (
+        <div data-reveal style={`--reveal-delay:${i * 90}ms`} class="border-l-2 border-red-600 pl-4">
+          <div class="font-heading text-4xl font-extrabold tracking-tight sm:text-5xl">
+            {s.static ? <span>{s.value}</span> : <span data-countup={s.value} data-decimals={s.decimals ?? 0} data-suffix={s.suffix ?? ''}>0{s.suffix ?? ''}</span>}
+          </div>
+          <div class="mt-1 text-sm font-semibold uppercase tracking-wide text-ink-300">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ================= WHY OWNER-OPERATED ================= -->
+  <section class="bg-ink-50">
+    <div class="mx-auto max-w-7xl px-4 py-20 lg:px-6">
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div data-reveal class="relative order-2 lg:order-1">
+          <!-- TODO[MATT]: replace with a real photo of Matt and/or the crew & equipment. -->
+          <Image
+            src={dockBoat}
+            alt="Outback Construction's work on a Nebraska sandpit lake"
+            class="aspect-[4/3] w-full rounded-2xl object-cover shadow-2xl"
+            widths={[600, 900, 1200]}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            loading="lazy"
+          />
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 data-reveal class="font-heading text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl">
+            Why owner-operated matters
+          </h2>
+          <p data-reveal class="mt-6 text-lg text-ink-700">
+            When you hire Outback, you're hiring Matt — not a salesman who hands your project to a
+            rotating crew. Matt walks your shoreline, designs the fix, and is on the job. That's why
+            the recommendations are honest (we're not paying a sales commission), the communication is
+            direct (you have the owner's number), and the work holds up (his name is on it).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW WE WORK ================= -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-20 lg:px-6">
+      <h2 data-reveal class="font-heading text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl">
+        How we work
+      </h2>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {steps.map((s, i) => (
+          <div data-reveal style={`--reveal-delay:${i * 90}ms`} class="relative rounded-xl border border-ink-200 bg-white p-6">
+            <span class="font-heading text-5xl font-extrabold text-red-600/20">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="mt-2 font-heading text-lg font-bold text-ink-900">{s.t}</h3>
+            <p class="mt-2 text-ink-700">{s.b}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Fragment set:html={`<!-- TODO[MATT]: 2–3 paragraphs of real history — how did Outback start? Why marine construction? Crew size? This is the page where your actual story does the selling. Also: a photo of Matt, and crew/equipment photos. -->`} />
+
+
+  <!-- ================= REVIEWS + CTA ================= -->
+  <ReviewStrip />
+  <CTABlock heading="Storm damage? Spring inspection? Planning ahead?" body="Get experienced eyes on your shoreline before a small problem becomes a big one." />
+</Base>

@@ -1,0 +1,167 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import business from '../data/business.json';
+import locations from '../data/locations.json';
+import pierSunset from '../assets/pier-sunset.jpg';
+
+const title = 'Contact Outback Construction | Get a Shoreline Assessment | (402) 456-7968';
+const description =
+  "Tell us what's going on with your waterfront. You'll get a call back from Matt — a straight assessment and a real number. Serving Omaha & SE Nebraska lakes.";
+
+const { streetAddress, addressLocality, addressRegion, postalCode } = business.address;
+const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(`${streetAddress}, ${addressLocality}, ${addressRegion} ${postalCode}`)}&z=11&output=embed`;
+const inputClass =
+  'mt-1.5 w-full rounded-lg border border-ink-200 bg-white px-4 py-3 text-ink-900 shadow-sm transition placeholder:text-ink-300 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600/30';
+---
+<Base title={title} description={description} canonicalPath="/contact">
+  <!-- ================= HERO ================= -->
+  <section class="relative isolate flex min-h-[40vh] items-end overflow-hidden bg-ink-950 text-white">
+    <Image
+      src={pierSunset}
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 -z-20 h-full w-full object-cover opacity-70"
+      widths={[768, 1200, 1600]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950 via-ink-950/80 to-ink-950/40"></div>
+    <div class="mx-auto w-full max-w-7xl px-4 py-14 lg:px-6 lg:py-16">
+      <p class="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-red-500">
+        <span class="inline-block h-px w-8 bg-red-500"></span>
+        Contact
+      </p>
+      <h1 class="mt-3 font-heading text-4xl font-extrabold leading-tight tracking-tight drop-shadow sm:text-5xl">
+        Get a Shoreline Assessment
+      </h1>
+      <p class="mt-4 max-w-2xl text-lg text-ink-100">
+        Tell us what's going on with your waterfront — or what you want it to become. You'll get a
+        call back from Matt, a straight assessment, and a real number. No pressure, no runaround.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= FORM + INFO ================= -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 lg:px-6">
+      <div class="grid gap-12 lg:grid-cols-5">
+        <!-- Form -->
+        <div class="lg:col-span-3">
+          <form
+            action="/api/lead"
+            method="POST"
+            data-lead-form
+            class="rounded-2xl border border-ink-200 bg-white p-6 shadow-sm sm:p-8"
+          >
+            <!-- Honeypot (hidden from users; bots fill it) -->
+            <div class="hidden" aria-hidden="true">
+              <label>Company<input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
+            </div>
+
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="name" class="text-sm font-bold text-ink-900">Name</label>
+                <input id="name" name="name" type="text" required autocomplete="name" class={inputClass} />
+              </div>
+              <div>
+                <label for="phone" class="text-sm font-bold text-ink-900">Phone</label>
+                <input id="phone" name="phone" type="tel" required autocomplete="tel" class={inputClass} />
+              </div>
+            </div>
+
+            <div class="mt-5">
+              <label for="message" class="text-sm font-bold text-ink-900">What's going on with your shoreline?</label>
+              <textarea id="message" name="message" rows="5" required class={inputClass}></textarea>
+            </div>
+
+            <div class="mt-5">
+              <label for="lake" class="text-sm font-bold text-ink-900">Lake/community <span class="font-normal text-ink-500">(optional)</span></label>
+              <input id="lake" name="lake" type="text" class={inputClass} />
+            </div>
+
+            <button
+              type="submit"
+              class="mt-6 w-full rounded-lg bg-red-600 px-6 py-3.5 text-base font-bold text-white shadow-sm transition hover:bg-red-700 sm:w-auto"
+            >
+              {business.cta.button}
+            </button>
+            <p class="mt-3 text-sm text-ink-500">{business.cta.supportLine}</p>
+
+            <p data-form-status role="status" aria-live="polite" class="mt-4 hidden text-sm font-semibold"></p>
+          </form>
+        </div>
+
+        <!-- Direct + map -->
+        <aside class="lg:col-span-2">
+          <div class="rounded-2xl border border-ink-200 bg-ink-50 p-6 sm:p-8">
+            <h2 class="font-heading text-xl font-extrabold text-ink-900">Talk to Matt directly</h2>
+            <dl class="mt-5 space-y-4 text-ink-700">
+              <div>
+                <dt class="text-xs font-bold uppercase tracking-wide text-ink-500">Phone</dt>
+                <dd><a href={business.telephoneHref} data-phone-cta class="text-lg font-bold text-red-600 hover:text-red-700">{business.telephoneDisplay}</a></dd>
+              </div>
+              <div>
+                <dt class="text-xs font-bold uppercase tracking-wide text-ink-500">Email</dt>
+                <dd><a href={`mailto:${business.email}`} class="font-semibold text-ink-900 hover:text-red-600">{business.email}</a></dd>
+              </div>
+              <div>
+                <dt class="text-xs font-bold uppercase tracking-wide text-ink-500">Based in</dt>
+                <dd>{addressLocality}, {addressRegion} — serving Omaha &amp; Southeast Nebraska lakes</dd>
+              </div>
+            </dl>
+
+            <div class="mt-6 overflow-hidden rounded-xl border border-ink-200">
+              <iframe
+                title="Map of Outback Construction's service area"
+                src={mapSrc}
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                class="aspect-video w-full border-0"
+              ></iframe>
+            </div>
+
+            <div class="mt-6">
+              <p class="text-xs font-bold uppercase tracking-wide text-ink-500">Service areas</p>
+              <div class="mt-3 flex flex-wrap gap-2">
+                {locations.map((l) => (
+                  <a href={`/locations/${l.slug}`} class="rounded-full border border-ink-200 bg-white px-3 py-1.5 text-sm font-semibold text-ink-800 transition hover:border-red-600 hover:text-red-600">{l.navLabel}</a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  {/* Progressive enhancement: submit via fetch, fire nothing here — /thank-you fires generate_lead. */}
+  <script is:inline>
+    (function () {
+      var form = document.querySelector('[data-lead-form]');
+      if (!form) return;
+      var status = form.querySelector('[data-form-status]');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var btn = form.querySelector('button[type=submit]');
+        if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+        if (status) { status.className = 'mt-4 text-sm font-semibold text-ink-500'; status.textContent = ''; }
+        fetch('/api/lead', {
+          method: 'POST',
+          headers: { accept: 'application/json' },
+          body: new FormData(form),
+        })
+          .then(function (r) { return r.ok ? r.json() : Promise.reject(r); })
+          .then(function () { window.location.href = '/thank-you'; })
+          .catch(function () {
+            if (btn) { btn.disabled = false; btn.textContent = 'Get a Shoreline Assessment'; }
+            if (status) {
+              status.className = 'mt-4 text-sm font-semibold text-red-600';
+              status.textContent = 'Something went wrong. Please call Matt at ' + '(402) 456-7968' + ' or try again.';
+            }
+          });
+      });
+    })();
+  </script>
+</Base>

@@ -1,29 +1,27 @@
 /**
- * Cloudflare Pages Function — lead form handler for POST /api/lead.
+ * Cloudflare Worker entry — serves the static Astro site (via the ASSETS binding)
+ * and handles the lead form endpoint at POST /api/lead.
  *
- * Flow (per CLAUDE.md): validate → deliver (email/webhook) → success.
- * - JS fetch submissions (Accept: application/json) get a JSON response so the
- *   client can redirect to /thank-you.
- * - Plain form posts (no JS) get a 303 redirect to /thank-you directly, so the
- *   form works with zero client-side JavaScript.
+ * Deploy model: Workers + Static Assets (wrangler.jsonc). Static files are served
+ * first; any request that doesn't match a file invokes this Worker. So `/api/lead`
+ * runs here, and everything else falls through to env.ASSETS (which also serves the
+ * branded 404 page via `not_found_handling: "404-page"`).
  *
- * Delivery is env-driven so no secrets live in the repo. Configure in the
- * Cloudflare Pages dashboard (Settings → Environment variables):
+ * Lead delivery is env-driven (set in the Cloudflare dashboard → Settings → Variables):
  *   LEAD_WEBHOOK_URL  — optional: POST the lead JSON here (Zapier/Make/Slack/etc.)
  *   RESEND_API_KEY    — optional: send an email via Resend
  *   LEAD_TO_EMAIL     — where lead emails go (e.g. hello@outbackconstruction.net)
  *   LEAD_FROM_EMAIL   — verified sender (e.g. leads@outbackconstruction.net)
  * TODO[MATT/BUILD]: set at least one delivery method before launch. Until then
- * leads are only logged (visible in Cloudflare Pages function logs).
- * TODO[BUILD]: for GA4 Enhanced Conversions, hash phone (SHA-256) and forward.
+ * leads are only logged (visible in the Worker logs).
  */
 interface Env {
+  ASSETS: { fetch: (request: Request) => Promise<Response> };
   LEAD_WEBHOOK_URL?: string;
   RESEND_API_KEY?: string;
   LEAD_TO_EMAIL?: string;
   LEAD_FROM_EMAIL?: string;
 }
-type Ctx = { request: Request; env: Env };
 
 const jsonResponse = (obj: unknown, status = 200) =>
   new Response(JSON.stringify(obj), { status, headers: { 'content-type': 'application/json' } });
@@ -36,22 +34,14 @@ const toE164 = (phone: string) => {
   const d = phone.replace(/\D/g, '');
   return '+1' + (d.length > 10 ? d.slice(-10) : d);
 };
-// SHA-256 hex (Web Crypto is available in the Workers runtime).
 const sha256Hex = async (input: string) => {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(input));
   return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, '0')).join('');
 };
 
-// Non-POST methods aren't valid for this endpoint.
-export async function onRequestGet(): Promise<Response> {
-  return new Response('Method Not Allowed', { status: 405, headers: { allow: 'POST' } });
-}
-
-export async function onRequestPost(context: Ctx): Promise<Response> {
-  const { request, env } = context;
+async function handleLead(request: Request, env: Env): Promise<Response> {
   const wantsJson = (request.headers.get('accept') || '').includes('application/json');
 
-  // Parse either JSON or form-encoded bodies.
   let data: Record<string, string> = {};
   const contentType = request.headers.get('content-type') || '';
   try {
@@ -88,7 +78,6 @@ export async function onRequestPost(context: Ctx): Promise<Response> {
     phone,
     message,
     lake: lake || null,
-    // SHA-256 of the E.164 phone, for GA4 Enhanced Conversions downstream.
     hashedPhone: await sha256Hex(toE164(phone)),
     submittedAt: new Date().toISOString(),
     source: request.headers.get('referer') || null,
@@ -111,7 +100,6 @@ export async function onRequestPost(context: Ctx): Promise<Response> {
         body: JSON.stringify({
           from: env.LEAD_FROM_EMAIL || 'leads@outbackconstruction.net',
           to: env.LEAD_TO_EMAIL,
-          reply_to: undefined,
           subject: `New shoreline assessment request — ${name}`,
           text: `Name: ${name}\nPhone: ${phone}\nLake/community: ${lake || '—'}\n\n${message}\n\nSubmitted: ${lead.submittedAt}\nSource: ${lead.source || '—'}`,
         }),
@@ -119,7 +107,6 @@ export async function onRequestPost(context: Ctx): Promise<Response> {
       delivered = true;
     }
   } catch (err) {
-    // Don't fail the user if a downstream provider hiccups — log and continue.
     console.error('Lead delivery error:', err);
   }
 
@@ -129,3 +116,15 @@ export async function onRequestPost(context: Ctx): Promise<Response> {
 
   return wantsJson ? jsonResponse({ ok: true }) : seeOther('/thank-you', request);
 }
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+    if (url.pathname === '/api/lead') {
+      if (request.method === 'POST') return handleLead(request, env);
+      return new Response('Method Not Allowed', { status: 405, headers: { allow: 'POST' } });
+    }
+    // Everything else: serve the static site (and the 404 page for misses).
+    return env.ASSETS.fetch(request);
+  },
+};

@@ -8,11 +8,11 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import business from '../../data/business.json';
 import services from '../../data/services.json';
 import { serviceContent } from '../../data/service-content';
-import dockBoat from '../../assets/dock-boat.jpg';
-import lakehomeDusk from '../../assets/lakehome-dusk.jpg';
-import lakeSunset from '../../assets/lake-sunset.png';
-import dockDawn from '../../assets/dock-dawn.jpg';
-import pierSunset from '../../assets/pier-sunset.jpg';
+import projDock from '../../assets/proj-dock.jpg';
+import projSeawall from '../../assets/proj-seawall.jpg';
+import projRetaining from '../../assets/proj-retaining.jpg';
+import projBarge from '../../assets/proj-barge.jpg';
+import projBeach from '../../assets/proj-beach.jpg';
 
 export function getStaticPaths() {
   return services.map((s) => ({ params: { service: s.slug }, props: { service: s } }));
@@ -21,16 +21,15 @@ export function getStaticPaths() {
 const { service } = Astro.props;
 const content = serviceContent[service.slug];
 
-// Hero image per service.
-// TODO[MATT]: barge-work uses a placeholder water photo — supply a real barge/dredging photo.
+// Hero image per service — real Outback aerial project photos.
 const heroImages: Record<string, ImageMetadata> = {
-  'boat-docks': dockBoat,
-  seawalls: lakehomeDusk,
-  'retaining-walls': lakeSunset,
-  'barge-work': dockDawn,
-  'beach-reclamation': pierSunset,
+  'boat-docks': projDock,
+  seawalls: projSeawall,
+  'retaining-walls': projRetaining,
+  'barge-work': projBarge,
+  'beach-reclamation': projBeach,
 };
-const heroImg = heroImages[service.slug] ?? dockBoat;
+const heroImg = heroImages[service.slug] ?? projDock;
 
 const businessId = `${business.url}/#business`;
 const pageUrl = `${business.url}/services/${service.slug}`;

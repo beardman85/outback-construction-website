@@ -7,12 +7,14 @@ import business from '../data/business.json';
 import services from '../data/services.json';
 import locations from '../data/locations.json';
 import reviews from '../data/reviews.json';
-import heroDock from '../assets/hero-dock.jpg';
-import lakehomeDusk from '../assets/lakehome-dusk.jpg';
-import dockBoat from '../assets/dock-boat.jpg';
-import dockDawn from '../assets/dock-dawn.jpg';
-import pierSunset from '../assets/pier-sunset.jpg';
-import lakeSunset from '../assets/lake-sunset.png';
+import projHero from '../assets/proj-hero.jpg';
+import projInvestment from '../assets/proj-investment.jpg';
+import projDock from '../assets/proj-dock.jpg';
+import projSeawall from '../assets/proj-seawall.jpg';
+import projRetaining from '../assets/proj-retaining.jpg';
+import projBeach from '../assets/proj-beach.jpg';
+import dockDawn from '../assets/dock-dawn.jpg'; // problem section (moody)
+import lakeSunset from '../assets/lake-sunset.png'; // final CTA band (decorative)
 
 const title = 'Marine Construction Contractor | Omaha & SE Nebraska | Outback Construction';
 const description =
@@ -42,21 +44,20 @@ const whyBlocks = [
   { title: 'Built for this water.', body: 'Every wall, dock, and beach is designed for the specific conditions of Nebraska sandpit lakes: sandy soils, ice heave, boat wake, and spring water swings.' },
 ];
 
-// TODO[MATT]: these are representative stock photos, NOT Outback projects.
-// Replace the /our-work gallery with 6–12 real before/after project photos + lake names.
+// Real Outback aerial project photos. TODO[MATT]: add specific lake names if desired.
 const gallery = [
-  { img: heroDock, alt: 'Composite boat dock at sunset on a Nebraska lake' },
-  { img: dockBoat, alt: 'New wood dock with a moored boat on a clear-water sandpit lake' },
-  { img: lakehomeDusk, alt: 'Lakefront home protected by a seawall and rip-rap shoreline at dusk' },
-  { img: pierSunset, alt: 'Wooden pier reaching into a golden sunset over the lake' },
+  { img: projSeawall, alt: 'Steel seawall and new sand beach on a Southeast Nebraska lake by Outback Construction' },
+  { img: projDock, alt: 'Custom boat dock and moorage built by Outback Construction' },
+  { img: projRetaining, alt: 'Boulder retaining wall and beach on a Nebraska sandpit lake' },
+  { img: projBeach, alt: 'Beach reclamation — fresh graded sand shoreline by Outback Construction' },
 ];
 ---
 <Base title={title} description={description} canonicalPath="/" schemaGraph={reviewSchema}>
   <!-- ================= HERO ================= -->
   <section class="relative isolate flex min-h-[70vh] items-center overflow-hidden bg-ink-950 text-white">
     <Image
-      src={heroDock}
-      alt="A finished composite boat dock at sunset on a Southeast Nebraska lake, built by Outback Construction"
+      src={projHero}
+      alt="Aerial view of an Outback Construction project on a Valley, Nebraska lake — seawall, sand beach, boat dock and lift on a lakefront property"
       class="animate-kenburns absolute inset-0 -z-20 h-full w-full object-cover"
       widths={[768, 1200, 1600]}
       sizes="100vw"
@@ -207,8 +208,8 @@ const gallery = [
       <div class="grid items-center gap-12 lg:grid-cols-2">
         <div data-reveal class="relative">
           <Image
-            src={lakehomeDusk}
-            alt="A lakefront home at dusk, protected by a seawall and rip-rap shoreline built to hold the bank above the water"
+            src={projInvestment}
+            alt="Aerial of a modern lakefront home protected by an Outback seawall, with docks and boats on a Southeast Nebraska lake"
             class="aspect-[4/3] w-full rounded-2xl object-cover shadow-2xl"
             widths={[600, 900, 1200]}
             sizes="(min-width: 1024px) 50vw, 100vw"

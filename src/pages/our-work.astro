@@ -3,28 +3,28 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import CTABlock from '../components/CTABlock.astro';
 import services from '../data/services.json';
-import heroDock from '../assets/hero-dock.jpg';
-import dockBoat from '../assets/dock-boat.jpg';
-import lakehomeDusk from '../assets/lakehome-dusk.jpg';
-import lakeSunset from '../assets/lake-sunset.png';
-import pierSunset from '../assets/pier-sunset.jpg';
-import dockDawn from '../assets/dock-dawn.jpg';
+import projInvestment from '../assets/proj-investment.jpg';
+import projDock from '../assets/proj-dock.jpg';
+import projSeawall from '../assets/proj-seawall.jpg';
+import projRetaining from '../assets/proj-retaining.jpg';
+import projBeach from '../assets/proj-beach.jpg';
+import projBarge from '../assets/proj-barge.jpg';
+import projAerial from '../assets/proj-aerial.jpg';
 
 const title = 'Our Work | Docks, Seawalls & Shorelines | Outback Construction';
 // TODO[MATT]: review this meta description (content.md gave no /our-work copy).
 const description =
   "See Outback Construction's marine work across Southeast Nebraska lakes — boat docks, seawalls, retaining walls, beaches & barge projects. Owner-operated since 1999.";
 
-// TODO[MATT]: THESE ARE STOCK PLACEHOLDERS, not Outback projects. Replace with
-// 6–12 real before/after project photos and add the lake name to each `lake`.
-// Ideal: pair a before + after image per project.
+// Real Outback aerial project photos. TODO[MATT]: add the specific lake/community
+// name to each `lake` if you'd like it shown; add more projects here any time.
 const projects = [
-  { img: heroDock, category: 'boat-docks', title: 'Composite dock build', lake: '' },
-  { img: dockBoat, category: 'boat-docks', title: 'New dock & moorage', lake: '' },
-  { img: lakehomeDusk, category: 'seawalls', title: 'Seawall & shoreline protection', lake: '' },
-  { img: lakeSunset, category: 'retaining-walls', title: 'Rip-rap shoreline & retaining', lake: '' },
-  { img: pierSunset, category: 'beach-reclamation', title: 'Rebuilt beach & pier', lake: '' },
-  { img: dockDawn, category: 'barge-work', title: 'Water-access dredging', lake: '' },
+  { img: projSeawall, category: 'seawalls', title: 'Steel seawall & sand beach', lake: '' },
+  { img: projDock, category: 'boat-docks', title: 'Custom boat dock & moorage', lake: '' },
+  { img: projRetaining, category: 'retaining-walls', title: 'Boulder retaining wall & beach', lake: '' },
+  { img: projBeach, category: 'beach-reclamation', title: 'Beach reclamation', lake: '' },
+  { img: projBarge, category: 'barge-work', title: 'Barge dredging & shoreline work', lake: '' },
+  { img: projAerial, category: 'seawalls', title: 'Seawall, beach & dock — full shoreline build', lake: '' },
 ];
 
 const filters = [{ slug: 'all', label: 'All projects' }, ...services.map((s) => ({ slug: s.slug, label: s.navLabel }))];
@@ -33,7 +33,7 @@ const labelFor = (slug: string) => services.find((s) => s.slug === slug)?.navLab
 <Base title={title} description={description} canonicalPath="/our-work">
   <!-- ================= HERO ================= -->
   <section class="relative isolate flex min-h-[45vh] items-end overflow-hidden bg-ink-950 text-white">
-    <Image src={dockBoat} alt="Marine construction work on a Southeast Nebraska lake by Outback Construction" class="absolute inset-0 -z-20 h-full w-full object-cover" widths={[768, 1200, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <Image src={projInvestment} alt="Aerial of an Outback Construction shoreline project on a Southeast Nebraska lake" class="absolute inset-0 -z-20 h-full w-full object-cover" widths={[768, 1200, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950 via-ink-950/70 to-ink-950/30"></div>
     <div class="mx-auto w-full max-w-7xl px-4 py-14 lg:px-6 lg:py-20">
       <p class="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-red-500">
@@ -82,7 +82,7 @@ const labelFor = (slug: string) => services.find((s) => s.slug === slug)?.navLab
             <div class="absolute inset-x-0 bottom-0 p-4">
               <span class="text-xs font-bold uppercase tracking-wide text-red-400">{labelFor(p.category)}</span>
               <p class="font-heading font-bold text-white">{p.title}</p>
-              {!p.lake && <span class="text-xs text-white/60">TODO[MATT]: add lake name</span>}
+              {p.lake && <span class="text-xs text-white/70">{p.lake}</span>}
             </div>
             <span class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-ink-900 opacity-0 transition group-hover:opacity-100" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" /></svg>

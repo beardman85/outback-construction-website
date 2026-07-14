@@ -60,6 +60,12 @@ const GTM_ID = 'GTM-N3986WW9';
     <meta property="og:image" content={ogImageURL} />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <!-- Geo (local SEO) -->
+    <meta name="geo.region" content={`US-${business.address.addressRegion}`} />
+    <meta name="geo.placename" content={`${business.address.addressLocality}, ${business.address.addressRegion}`} />
+    <meta name="geo.position" content={`${business.geo.latitude};${business.geo.longitude}`} />
+    <meta name="ICBM" content={`${business.geo.latitude}, ${business.geo.longitude}`} />
+
     {/* Consent Mode v2 defaults MUST run before GTM. Only injected when a container ID is set. */}
     {GTM_ID && (
       <script is:inline set:html={`

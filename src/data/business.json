@@ -18,10 +18,11 @@
     "addressCountry": "US"
   },
   "geo": {
-    "latitude": 41.34667,
-    "longitude": -96.60972,
-    "_todoMatt": "Confirm exact business geo-coordinates. Approximate Colon, NE center used."
+    "latitude": 41.321698,
+    "longitude": -96.57212
   },
+  "mapUrl": "https://maps.app.goo.gl/Abtxebnevdn32TRo8",
+  "reviewUrl": "https://g.page/r/CYcKwSLs0TmGEBM/review",
   "rating": {
     "value": "5.0",
     "reviewCount": 6,
@@ -47,12 +48,11 @@
     "button": "Get a Shoreline Assessment",
     "supportLine": "Talk directly with Matt — honest answers, no pressure."
   },
-  "sameAs": ["https://www.facebook.com/mh.outback"],
+  "sameAs": ["https://www.facebook.com/mh.outback", "https://maps.app.goo.gl/Abtxebnevdn32TRo8"],
   "openingHoursSpecification": [],
   "_todoMatt": [
-    "sameAs: Facebook added; still add the Google Business Profile (Maps) URL.",
     "openingHoursSpecification: confirm business hours for LocalBusiness schema.",
-    "geo: confirm exact coordinates (approximate Colon, NE used).",
+    "geo: coordinates geocoded from the street address; drop a precise map pin if you want it exact.",
     "rating.reviewCount (6) is used in schema only; UI shows '5.0 on Google' with no count per content.md. Confirm count as reviews grow."
   ]
 }

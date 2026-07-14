@@ -20,9 +20,7 @@ const reviewSchema = reviews.all.map((r) => ({
   itemReviewed: { '@id': businessId },
 }));
 
-// TODO[MATT/BUILD]: generate the direct g.page / write-review short link. Until
-// then this points to the business on Google Maps as a functional fallback.
-const reviewLink = 'https://www.google.com/maps/search/?api=1&query=Outback+Construction+Colon+NE';
+const reviewLink = business.reviewUrl;
 ---
 <Base title={title} description={description} canonicalPath="/reviews" schemaGraph={reviewSchema}>
   <!-- ================= HERO ================= -->

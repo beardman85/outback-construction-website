@@ -33,8 +33,15 @@
   {
     "slug": "bennington",
     "navLabel": "Bennington",
-    "metaTitle": "Docks, Seawalls & Shoreline Work in Bennington, NE | Outback",
-    "h1": "Marine Construction in Bennington"
+    "metaTitle": "Bennington Lake Communities | Docks, Seawalls & Shorelines | Outback",
+    "h1": "Marine Construction for Bennington's Lake Communities"
+  },
+  {
+    "slug": "newport-landing",
+    "navLabel": "Newport Landing",
+    "flagship": true,
+    "metaTitle": "Newport Landing Dock & Seawall Contractor | Bennington, NE | Outback",
+    "h1": "Marine Construction at Newport Landing"
   },
   {
     "slug": "springfield",
@@ -44,8 +51,15 @@
   },
   {
     "slug": "plattsmouth",
-    "navLabel": "Plattsmouth & Beaver Lake",
-    "metaTitle": "Beaver Lake & Plattsmouth Marine Contractor | Outback Construction",
-    "h1": "Marine Construction at Beaver Lake and Plattsmouth"
+    "navLabel": "Plattsmouth",
+    "metaTitle": "Plattsmouth & Louisville Lake Communities | Docks & Seawalls | Outback",
+    "h1": "Marine Construction for Plattsmouth & Louisville Lake Communities"
+  },
+  {
+    "slug": "beaver-lake",
+    "navLabel": "Beaver Lake",
+    "flagship": true,
+    "metaTitle": "Beaver Lake Dock, Seawall & Shoreline Contractor | Plattsmouth, NE | Outback",
+    "h1": "Marine Construction at Beaver Lake"
   }
 ]

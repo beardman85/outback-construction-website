@@ -72,12 +72,25 @@ export const locationContent: Record<string, LocationContent> = {
     ],
   },
   bennington: {
-    metaDescription: `Boat docks, seawalls, retaining walls & beach work for Bennington, NE lake communities. Owner-operated marine construction, built to last, since 1998.`,
+    metaDescription: `Marine construction for Bennington's lake communities — Newport Landing, Bennington Lake & more. Docks, seawalls, retaining walls & beaches. Owner-operated since 1998.`,
     mapQuery: `Bennington, NE`,
-    neighbors: ['omaha', 'valley'],
-    localFaqTodo: `3–5`,
+    neighbors: ['newport-landing', 'omaha', 'valley'],
+    localFaqTodo: `3–5 — Newport Landing association standards, builder-grade replacement timelines, wake damage`,
     paragraphs: [
-      `The lake communities around Bennington<!-- TODO[MATT]: name them — e.g. Newport Landing, Bennington Lake area --> feature some of the metro's newer waterfront development — and newer doesn't mean maintenance-free. Builder-grade shoreline work often needs upgrading within a decade, especially where wake traffic is heavy. Outback builds and repairs <a class="ob-link" href="/services/boat-docks">docks</a>, <a class="ob-link" href="/services/seawalls">seawalls</a>, <a class="ob-link" href="/services/retaining-walls">retaining walls</a> and <a class="ob-link" href="/services/beach-reclamation">beaches</a> here to a different standard: ours.`,
+      `The lake communities around Bennington — <strong>Newport Landing</strong>, Bennington Lake, and Newport Vista<!-- TODO[MATT]: confirm the Bennington-area communities you serve --> — are some of the metro's newest waterfront development. And newer doesn't mean maintenance-free: builder-grade shoreline work often needs upgrading within a decade, especially where wake traffic is heavy.`,
+      `Newport Landing is the premier development here. See our dedicated <a class="ob-link" href="/locations/newport-landing">Newport Landing marine construction</a> page for that community specifically.`,
+      `Across the Bennington area, Outback builds and repairs <a class="ob-link" href="/services/boat-docks">docks</a>, <a class="ob-link" href="/services/seawalls">seawalls</a>, <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, and <a class="ob-link" href="/services/beach-reclamation">beaches</a> to a different standard: ours.`,
+    ],
+  },
+  'newport-landing': {
+    metaDescription: `Dock, seawall, retaining wall & beach construction at Newport Landing in Bennington, NE. Owner-operated marine contractor built for wake and Nebraska winters. Since 1998.`,
+    mapQuery: `Newport Landing, Bennington, NE`,
+    neighbors: ['bennington', 'omaha'],
+    localFaqTodo: `3–5 Newport Landing-specific — association approval/standards, builder-grade dock lifespan, wake & ice damage signs`,
+    paragraphs: [
+      `Newport Landing is Bennington's premier lake development — a private, wake-friendly lake where the shoreline is the centerpiece of every property. It's newer waterfront, but newer doesn't mean maintenance-free: builder-grade docks, seawalls, and retaining walls often need upgrading within a decade, especially on a lake with heavy wake and boat traffic. That's exactly the work Outback specializes in.`,
+      `We build and repair to a standard that holds up to Newport Landing's conditions — bigger boats, constant wake, ice heave, and the water swings that come with a managed lake.<!-- TODO[MATT]: note any real Newport Landing projects to feature --> If your seawall is starting to lean, your beach is washing out, or a builder-grade dock is already showing its age, owner Matt Wesch will walk your shoreline and give you a straight assessment — including "this can wait" when that's the honest answer.`,
+      `At Newport Landing we handle <a class="ob-link" href="/services/boat-docks">boat docks and dock repair</a>, <a class="ob-link" href="/services/seawalls">seawall construction and storm repair</a>, waterfront <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a>, and <a class="ob-link" href="/services/barge-work">barge work</a> for tight-access lots — all built with premium materials, engineered to last.`,
     ],
   },
   springfield: {
@@ -90,13 +103,25 @@ export const locationContent: Record<string, LocationContent> = {
     ],
   },
   plattsmouth: {
-    metaDescription: `Marine construction at Beaver Lake & Plattsmouth, NE — seawalls, beaches, docks & barge work built for big-lake wave exposure. Owner-operated since 1998.`,
+    metaDescription: `Marine construction around Plattsmouth & Louisville, NE — Beaver Lake, Buccaneer Bay & Copper Dollar Cove. Docks, seawalls, beaches & barge work. Owner-operated since 1998.`,
+    mapQuery: `Plattsmouth, NE`,
+    neighbors: ['beaver-lake', 'springfield', 'omaha'],
+    localFaqTodo: `3–5 — association processes by lake, big-lake wave/ice damage, barge access`,
+    paragraphs: [
+      `South of the metro along the Platte, the Plattsmouth and Louisville area is home to some of Southeast Nebraska's biggest private lakes — <strong>Beaver Lake</strong>, Buccaneer Bay, and Copper Dollar Cove<!-- TODO[MATT]: confirm the Plattsmouth/Louisville-area lakes you serve -->. These are established, high-traffic lakes where wave exposure and ice are hard on shoreline infrastructure.`,
+      `Beaver Lake is the largest, with a formal association and its own construction standards. See our dedicated <a class="ob-link" href="/locations/beaver-lake">Beaver Lake marine construction</a> page for that community specifically.`,
+      `Across the Plattsmouth and Louisville lakes, Outback builds and repairs <a class="ob-link" href="/services/seawalls">seawalls</a>, <a class="ob-link" href="/services/beach-reclamation">beaches</a>, <a class="ob-link" href="/services/boat-docks">docks</a>, and <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, and handles <a class="ob-link" href="/services/barge-work">barge work</a> for tight-access lots. Since 1998.`,
+    ],
+  },
+  'beaver-lake': {
+    metaDescription: `Dock, seawall & beach construction at Beaver Lake, NE — built for big-lake wave exposure, ice, and Beaver Lake Association standards. Owner-operated marine contractor since 1998.`,
     mapQuery: `Beaver Lake, Nebraska`,
-    neighbors: ['springfield', 'omaha'],
-    localFaqTodo: `3–5`,
+    neighbors: ['plattsmouth', 'springfield'],
+    localFaqTodo: `3–5 Beaver Lake-specific — Association approval process & standards, wave/ice damage, barge access for tight lots`,
     paragraphs: [
       `Beaver Lake is one of Southeast Nebraska's largest private lake communities — hundreds of waterfront homes, serious boat traffic, and miles of shoreline that take real wave energy all summer. That combination is hard on seawalls, beaches, and docks, and it's exactly the work Outback has specialized in since 1998.`,
-      `Whether it's a seawall showing its age, a beach that's migrated into the lake, a dock due for rebuild, or a tight-access lot that needs barge work, we build for Beaver Lake conditions specifically — wave exposure, ice, and the association standards that come with a managed lake community.<!-- TODO[MATT]: confirm Beaver Lake association approval process details + any other Plattsmouth-area water you serve -->`,
+      `Beaver Lake is managed by a formal association, and shoreline projects here come with rules, standards, and an approval process. We're familiar with working inside those requirements — planning the project, meeting the association's standards, and building it to last.<!-- TODO[MATT]: confirm Beaver Lake Association approval specifics --> Whether it's a seawall showing its age, a beach that's migrated into the lake, a dock due for a rebuild, or a tight-access lot that needs barge work, we build for Beaver Lake conditions specifically.`,
+      `At Beaver Lake we handle <a class="ob-link" href="/services/seawalls">seawall construction and storm repair</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a>, <a class="ob-link" href="/services/boat-docks">boat docks and dock repair</a>, <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, and <a class="ob-link" href="/services/barge-work">barge work</a> for lots equipment can't reach by land.`,
     ],
   },
 };

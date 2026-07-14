@@ -60,7 +60,7 @@ const faqPage = {
   })),
 };
 
-const trustItems = ['Since 1999', '★ 5.0 on Google', 'Licensed & Insured', 'Owner-Operated'];
+const trustItems = ['Since 1998', '★ 5.0 on Google', 'Licensed & Insured', 'Owner-Operated'];
 const navLabelFor = (href: string) =>
   services.find((s) => `/services/${s.slug}` === href)?.navLabel ?? 'Learn more';
 ---
@@ -86,7 +86,7 @@ const navLabelFor = (href: string) =>
       <Breadcrumbs crumbs={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: service.navLabel }]} />
       <p class="mt-6 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-red-400">
         <span class="inline-block h-px w-8 bg-red-500"></span>
-        Marine Construction · Since 1999
+        Marine Construction · Since 1998
       </p>
       <h1 class="mt-3 max-w-3xl font-heading text-4xl font-extrabold leading-[1.08] tracking-tight drop-shadow sm:text-5xl">
         {service.h1}

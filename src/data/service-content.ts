@@ -30,7 +30,7 @@ export const serviceContent: Record<string, ServiceContent> = {
   seawalls: {
     intro: [
       `Your seawall is the line between the lake and everything you've built above it — the lawn, the landscaping, the patio, the foundation. When it's sound, you never think about it. When it starts to fail, every storm becomes a question mark.`,
-      `Outback Construction has been building and repairing seawalls on Southeast Nebraska lakes since 1999. We know what these walls are up against: ice heave in February, boat wake all summer, saturated sandy soils, and spring water levels that can swing by feet. We build for those conditions — not for the brochure.`,
+      `Outback Construction has been building and repairing seawalls on Southeast Nebraska lakes since 1998. We know what these walls are up against: ice heave in February, boat wake all summer, saturated sandy soils, and spring water levels that can swing by feet. We build for those conditions — not for the brochure.`,
     ],
     sections: [
       {
@@ -65,7 +65,7 @@ export const serviceContent: Record<string, ServiceContent> = {
         type: 'prose',
         heading: `What it's like to work with Outback`,
         paragraphs: [
-          `You call, Matt answers. He walks the shoreline with you, explains what he sees, and gives you a straight recommendation — including "this can wait" when that's the truth. Work is scheduled clearly, the crew shows up when promised, and the site is left clean. We've done it this way since 1999, and it's why our reviews say things like "returned all calls in an extremely quick fashion" and "completed the work as promised."`,
+          `You call, Matt answers. He walks the shoreline with you, explains what he sees, and gives you a straight recommendation — including "this can wait" when that's the truth. Work is scheduled clearly, the crew shows up when promised, and the site is left clean. We've done it this way since 1998, and it's why our reviews say things like "returned all calls in an extremely quick fashion" and "completed the work as promised."`,
         ],
       },
     ],
@@ -87,7 +87,7 @@ export const serviceContent: Record<string, ServiceContent> = {
   'boat-docks': {
     intro: [
       `The dock is where lake life actually happens — where the boat lives, where the kids jump in, where the evening ends. It's also a structure that takes a beating: sun, waves, ice, and a few thousand landings a season. A dock built right disappears into the background of your summers. A dock built wrong is a repair bill with a diving board.`,
-      `Outback has built and repaired docks on Southeast Nebraska lakes since 1999 — for wake boats, pontoons, fishing boats, and everything that ties up next to them.`,
+      `Outback has built and repaired docks on Southeast Nebraska lakes since 1998 — for wake boats, pontoons, fishing boats, and everything that ties up next to them.`,
     ],
     sections: [
       {

@@ -50,13 +50,25 @@ export const locationContent: Record<string, LocationContent> = {
     ],
   },
   fremont: {
-    metaDescription: `Docks, seawalls, retaining walls & beach reclamation around Fremont's lakes, including Woodcliff. Local marine contractor, owner-operated since 1998.`,
+    metaDescription: `Marine construction for Fremont's lake communities — Woodcliff, Lake Ridge, Cottonwood Cove & more. Docks, seawalls, retaining walls & beaches. Owner-operated since 1998.`,
     mapQuery: `Fremont, NE`,
-    neighbors: ['valley', 'waterloo'],
-    localFaqTodo: `3–5 — Woodcliff association requirements, common era/type of existing seawalls, dredging needs`,
+    neighbors: ['woodcliff', 'valley', 'waterloo'],
+    localFaqTodo: `3–5 — association requirements by community, common era/type of existing seawalls, dredging needs`,
     paragraphs: [
-      `Fremont-area lake living centers on communities like Woodcliff and the sandpit lakes along the Platte south of town.<!-- TODO[MATT]: confirm/add the communities you serve here --> These are established waterfront neighborhoods where the docks, seawalls, and beaches were often built decades ago — which means a lot of the work here is smart replacement: taking aging infrastructure and rebuilding it to modern standards that handle today's bigger boats and wake.`,
-      `Outback is based just down the road in Colon — Fremont's lakes are home turf. Since 1998 we've handled <a class="ob-link" href="/services/boat-docks">dock construction and repair</a>, <a class="ob-link" href="/services/seawalls">seawalls</a>, <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a>, and <a class="ob-link" href="/services/barge-work">barge-access projects</a> throughout the area.`,
+      `Fremont sits at the center of a cluster of private lake communities — <strong>Woodcliff</strong>, Lake Ridge, Cottonwood Cove, and the sandpit lakes along the Platte south of town.<!-- TODO[MATT]: confirm which Fremont-area communities to list --> These are established waterfront neighborhoods where docks, seawalls, and beaches were often built decades ago, so much of the work here is smart replacement — rebuilding aging infrastructure to modern standards that handle today's bigger boats and wake.`,
+      `Woodcliff is the largest of these, and we've built seawalls and shoreline access there. See our dedicated <a class="ob-link" href="/locations/woodcliff">Woodcliff marine construction</a> page for that community specifically.`,
+      `Outback is based just down the road in Colon, so Fremont's lakes are home turf. Since 1998 we've handled <a class="ob-link" href="/services/boat-docks">dock construction and repair</a>, <a class="ob-link" href="/services/seawalls">seawalls</a>, <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a>, and <a class="ob-link" href="/services/barge-work">barge-access projects</a> throughout the area.`,
+    ],
+  },
+  woodcliff: {
+    metaDescription: `Marine construction at Woodcliff Lakes near Fremont, NE — seawalls, boat docks, retaining walls & beach reclamation, built to association standards. Owner-operated since 1998.`,
+    mapQuery: `Woodcliff, NE`,
+    neighbors: ['fremont', 'valley'],
+    localFaqTodo: `3–5 Woodcliff-specific — association approval process/standards, typical seawall era & signs it needs replacing, dock rebuild timing`,
+    paragraphs: [
+      `Woodcliff is one of the largest and most established lake communities in the Fremont area — a private, managed lake where the shoreline is the whole reason people live here. Much of Woodcliff's dock, seawall, and beach infrastructure was built decades ago, which means a lot of the work here is smart replacement: taking aging, undersized, or failing structures and rebuilding them to handle today's bigger boats, heavier wake, and Nebraska winters. Outback has built seawalls and shoreline access along Woodcliff's water — it's exactly the kind of managed-lake project we specialize in.`,
+      `Because Woodcliff is an association-managed lake, shoreline projects often come with approval requirements and construction standards.<!-- TODO[MATT]: confirm Woodcliff association approval specifics --> We're used to working within them — planning the build, staging materials on tight lake lots, and doing the work cleanly so it passes review and lasts. If your seawall is leaning, your beach has migrated into the lake, or your dock is due for a rebuild, that's a straight assessment away.`,
+      `At Woodcliff we handle the full range of marine construction: <a class="ob-link" href="/services/seawalls">seawall construction and storm repair</a>, custom <a class="ob-link" href="/services/boat-docks">boat docks and dock repair</a>, waterfront <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a> for swim frontage, and <a class="ob-link" href="/services/barge-work">barge work</a> for tight-access lots. Owner Matt Wesch walks every Woodcliff shoreline personally.`,
     ],
   },
   bennington: {

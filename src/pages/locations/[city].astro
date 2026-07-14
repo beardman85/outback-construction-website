@@ -15,6 +15,7 @@ import dockDawn from '../../assets/dock-dawn.jpg';
 import lakehomeDusk from '../../assets/lakehome-dusk.jpg';
 import pierSunset from '../../assets/pier-sunset.jpg';
 import lakeSunset from '../../assets/lake-sunset.png';
+import woodcliffHero from '../../assets/jobs/job-05.jpg'; // real Woodcliff seawall & beach project
 
 export function getStaticPaths() {
   return locations.map((l) => ({ params: { city: l.slug }, props: { location: l } }));
@@ -29,6 +30,7 @@ const heroImages: Record<string, ImageMetadata> = {
   valley: heroDock,
   waterloo: dockDawn,
   fremont: lakehomeDusk,
+  woodcliff: woodcliffHero,
   bennington: pierSunset,
   springfield: lakeSunset,
   plattsmouth: heroDock,

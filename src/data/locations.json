@@ -20,8 +20,15 @@
   {
     "slug": "fremont",
     "navLabel": "Fremont",
-    "metaTitle": "Marine Construction in Fremont, NE | Woodcliff & Area Lakes | Outback",
-    "h1": "Marine Construction Around Fremont's Lakes"
+    "metaTitle": "Fremont Lake Communities | Docks, Seawalls & Shorelines | Outback",
+    "h1": "Marine Construction for Fremont's Lake Communities"
+  },
+  {
+    "slug": "woodcliff",
+    "navLabel": "Woodcliff",
+    "flagship": true,
+    "metaTitle": "Woodcliff Marine Construction | Seawalls, Docks & Shorelines | Outback",
+    "h1": "Marine Construction at Woodcliff Lakes"
   },
   {
     "slug": "bennington",

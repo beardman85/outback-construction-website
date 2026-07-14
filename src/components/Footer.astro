@@ -59,7 +59,7 @@ const { streetAddress, addressLocality, addressRegion, postalCode } = business.a
       <nav aria-label="Service areas">
         <h2 class="text-sm font-bold uppercase tracking-wide text-red-400">Service Areas</h2>
         <ul class="mt-4 space-y-2 text-sm">
-          {locations.map((l) => (
+          {locations.filter((l) => !(l as { flagship?: boolean }).flagship).map((l) => (
             <li><a href={`/locations/${l.slug}`} class="text-ink-300 hover:text-white">{l.navLabel}</a></li>
           ))}
         </ul>

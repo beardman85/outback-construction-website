@@ -39,10 +39,12 @@ const GTM_ID = 'GTM-N3986WW9';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Museo Sans via Adobe Fonts (licensed). Kit: hzs6raj. -->
+    <!-- Museo Sans via Adobe Fonts (licensed). Kit: hzs6raj. Loaded async so it
+         never blocks render — the fallback stack shows first, Museo swaps in. -->
     <link rel="preconnect" href="https://use.typekit.net" crossorigin />
     <link rel="preconnect" href="https://p.typekit.net" crossorigin />
-    <link rel="stylesheet" href="https://use.typekit.net/hzs6raj.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/hzs6raj.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://use.typekit.net/hzs6raj.css" /></noscript>
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
@@ -80,7 +82,21 @@ const GTM_ID = 'GTM-N3986WW9';
     )}
     {GTM_ID && (
       <script is:inline set:html={`
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');
+        (function(w,d,s,l,i){
+          function load(){
+            if (w.__gtmLoaded) return; w.__gtmLoaded = 1;
+            w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+            var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          }
+          // Defer GTM off the critical render path: load on the first user
+          // interaction, or shortly after the page settles — whichever comes
+          // first. dataLayer events queued before this fire once GTM loads.
+          var evts=['scroll','click','keydown','touchstart','pointerdown'];
+          function onFirst(){ evts.forEach(function(e){w.removeEventListener(e,onFirst)}); load(); }
+          evts.forEach(function(e){w.addEventListener(e,onFirst,{once:true,passive:true})});
+          w.addEventListener('load', function(){ setTimeout(load, 1800); });
+        })(window,document,'script','dataLayer','${GTM_ID}');
       `} />
     )}
 

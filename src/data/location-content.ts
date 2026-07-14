@@ -19,34 +19,36 @@ export interface LocationContent {
 
 export const locationContent: Record<string, LocationContent> = {
   omaha: {
-    metaDescription: `Marine construction contractor serving Omaha's lakefront properties — boat docks, seawalls, retaining walls, barge work & beach reclamation. Owner-operated since 1998.`,
+    metaDescription: `Marine construction for Omaha & West Omaha lake communities — Mallard Landing, West Shores, Cedar Creek & more. Docks, seawalls, retaining walls & beaches. Since 1998.`,
     mapQuery: `Omaha, NE`,
-    neighbors: ['bennington', 'springfield'],
-    localFaqTodo: `3–5 Omaha-specific questions`,
+    neighbors: ['bennington', 'valley', 'springfield'],
+    localFaqTodo: `3–5 Omaha-specific — west-metro HOA lake standards, sandpit vs. reservoir shorelines, permitting`,
     paragraphs: [
-      `Omaha's lakefront properties are spread across the metro — private lake communities, sandpit lakes on the city's west and south edges, and acreage properties with their own water.<!-- TODO[MATT]: name the Omaha-metro communities/lakes you serve --> What they share: owners who've invested heavily in their waterfront and need a contractor who specializes in it.`,
+      `Omaha's private lake living is concentrated on the metro's west edge — communities like <strong>Mallard Landing</strong>, West Shores, West Bay Woods, Cedar Creek near Lake Cunningham, and Paradise Lakes to the northwest.<!-- TODO[MATT]: confirm the Omaha-metro lake communities you serve --> What they share: owners who've invested heavily in their waterfront and need a contractor who specializes in it.`,
       `That specialization is the whole company. Docks, seawalls, retaining walls, barge work, and beach reclamation — marine construction is all Outback has done since 1998. Omaha homeowners typically find us after the general contractor says "we don't really do water" — or after the cheap fix from a few years ago starts leaning.`,
+      `We handle <a class="ob-link" href="/services/boat-docks">boat docks and dock repair</a>, <a class="ob-link" href="/services/seawalls">seawalls</a>, <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a>, and <a class="ob-link" href="/services/barge-work">barge work</a> across the metro. For the sandpit-lake communities just west — Bluewater, Flatwater, and the Ginger lakes — see our <a class="ob-link" href="/locations/valley">Valley lake communities</a> page.`,
     ],
   },
   valley: {
-    metaDescription: `Boat docks, seawalls, retaining walls & beach reclamation for Valley, NE sandpit-lake communities. Owner-operated marine construction since 1998.`,
+    metaDescription: `Marine construction for Valley, NE's sandpit-lake communities — Ginger Cove, Ginger Woods, Riverside Lakes, Bluewater & Flatwater. Docks, seawalls & beaches since 1998.`,
     mapQuery: `Valley, NE`,
-    neighbors: ['waterloo', 'fremont'],
+    neighbors: ['waterloo', 'fremont', 'omaha'],
     localFaqTodo: `3–5 Valley-specific questions — HOA/lake association approval processes, common wall types in these communities, wake boat traffic`,
     paragraphs: [
-      `Valley sits at the heart of Nebraska sandpit-lake country. The lake communities along the Platte here<!-- TODO[MATT]: name the communities you've worked in, e.g. Ginger Cove, Ginger Woods, Riverside Lakes --> are exactly the kind of water Outback has built on since 1998: sandy soils, active boat traffic, and shorelines that need real engineering to hold.`,
+      `Valley sits at the heart of Nebraska sandpit-lake country — the highest concentration of private lakes in eastern Nebraska. The communities along the Platte here — <strong>Ginger Cove</strong>, <strong>Ginger Woods</strong>, Riverside Lakes, Bluewater, and Flatwater<!-- TODO[MATT]: confirm the Valley-area communities you serve --> — are exactly the kind of water Outback has built on since 1998: sandy soils, active boat traffic, and shorelines that need real engineering to hold.`,
       `Valley homeowners also remember what high water can do. The 2019 Platte River flooding hit this area hard, and a lot of shoreline infrastructure along these lakes has been repaired, rebuilt, or reinforced since. If your seawall or retaining wall predates 2019 and hasn't been evaluated since, that alone is worth an assessment.`,
       `What we do in Valley: custom <a class="ob-link" href="/services/boat-docks">boat docks and dock repair</a>, <a class="ob-link" href="/services/seawalls">seawall construction and storm repair</a>, waterfront <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a> for the swim frontage these communities are known for, and <a class="ob-link" href="/services/barge-work">barge work</a> for tight-access lots.`,
     ],
   },
   waterloo: {
-    metaDescription: `Marine construction for Waterloo & Venice, NE private lakes — docks, seawalls, retaining walls, beaches & barge work. Owner-operated since 1998.`,
+    metaDescription: `Marine construction for Waterloo & Venice, NE private lakes — Venice Lake, Lakeland Estates & Two Rivers waterfront. Docks, seawalls, beaches & barge work since 1998.`,
     mapQuery: `Waterloo, NE`,
     neighbors: ['valley', 'fremont'],
     localFaqTodo: `3–5 Waterloo & Venice-specific questions`,
     paragraphs: [
-      `The Elkhorn and Platte corridor around Waterloo and Venice is lined with private sandpit lakes where the shoreline IS the property value.<!-- TODO[MATT]: name communities you've served here --> Outback has worked these lakes since 1998, and we know their personality: deep, clear sandpit water, sandy banks that move when you don't want them to, and ice that tests every dock and wall each winter.`,
+      `The Elkhorn and Platte corridor around Waterloo and Venice is lined with private sandpit lakes where the shoreline IS the property value — <strong>Venice Lake</strong>, Lakeland Estates, and the Two Rivers waterfront among them.<!-- TODO[MATT]: confirm the Waterloo/Venice communities you serve --> Outback has worked these lakes since 1998, and we know their personality: deep, clear sandpit water, sandy banks that move when you don't want them to, and ice that tests every dock and wall each winter.`,
       `Waterloo also sits in the flood memory of 2019, when the Elkhorn rewrote a lot of shoreline in this area. If your frontage still shows it — scoured beach, undercut wall, a dock that never sat right afterward — those are the projects we do every week.`,
+      `What we do around Waterloo and Venice: <a class="ob-link" href="/services/boat-docks">boat docks and dock repair</a>, <a class="ob-link" href="/services/seawalls">seawall construction and storm repair</a>, <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a>, and <a class="ob-link" href="/services/barge-work">barge work</a> for tight-access lots.`,
     ],
   },
   fremont: {
@@ -94,12 +96,13 @@ export const locationContent: Record<string, LocationContent> = {
     ],
   },
   springfield: {
-    metaDescription: `Marine construction for Springfield, NE lake properties — docks, seawalls, retaining walls, beaches & barge work. Owner-operated since 1998.`,
+    metaDescription: `Marine construction for Springfield, NE lake communities — Buffalo Lake, Clearwater Shores, Sandy Pointe & Walnut Creek. Docks, seawalls, beaches & barge work since 1998.`,
     mapQuery: `Springfield, NE`,
     neighbors: ['omaha', 'plattsmouth'],
     localFaqTodo: `3–5`,
     paragraphs: [
-      `South of the metro, Springfield-area lake properties<!-- TODO[MATT]: name the lakes/communities --> combine acreage living with private water — and private water is the owner's responsibility, from the dock to the last foot of shoreline. Outback handles all of it: <a class="ob-link" href="/services/boat-docks">docks</a>, <a class="ob-link" href="/services/seawalls">seawalls</a>, <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a>, and <a class="ob-link" href="/services/barge-work">barge work</a> for sites equipment can't reach by land. Since 1998.`,
+      `South of the metro, the Springfield area combines acreage living with private water — communities like <strong>Buffalo Lake</strong>, Clearwater Shores, Sandy Pointe, and the Walnut Creek lake community.<!-- TODO[MATT]: confirm the Springfield-area lakes you serve --> Private water is the owner's responsibility, from the dock to the last foot of shoreline.`,
+      `Outback handles all of it: <a class="ob-link" href="/services/boat-docks">docks</a>, <a class="ob-link" href="/services/seawalls">seawalls</a>, <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a>, and <a class="ob-link" href="/services/barge-work">barge work</a> for sites equipment can't reach by land. Since 1998.`,
     ],
   },
   plattsmouth: {

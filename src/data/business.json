@@ -49,9 +49,16 @@
     "supportLine": "Talk directly with Matt — honest answers, no pressure."
   },
   "sameAs": ["https://www.facebook.com/mh.outback", "https://maps.app.goo.gl/Abtxebnevdn32TRo8"],
-  "openingHoursSpecification": [],
+  "hoursDisplay": "Mon–Sat: 7 AM – 9 PM · Closed Sunday",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "07:00",
+      "closes": "21:00"
+    }
+  ],
   "_todoMatt": [
-    "openingHoursSpecification: confirm business hours for LocalBusiness schema.",
     "geo: coordinates geocoded from the street address; drop a precise map pin if you want it exact.",
     "rating.reviewCount (6) is used in schema only; UI shows '5.0 on Google' with no count per content.md. Confirm count as reviews grow."
   ]

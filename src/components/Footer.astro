@@ -24,6 +24,7 @@ const { streetAddress, addressLocality, addressRegion, postalCode } = business.a
           <div>
             <a href={`mailto:${business.email}`} class="hover:text-red-500">{business.email}</a>
           </div>
+          <div class="pt-1 text-ink-400">{business.hoursDisplay}</div>
         </address>
         {business.sameAs && business.sameAs.length > 0 && (
           <a

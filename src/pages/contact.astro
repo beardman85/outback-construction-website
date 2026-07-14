@@ -184,6 +184,10 @@ const hearAbout = ['Google search', 'Google Maps', 'Facebook / social media', 'R
                 <dt class="text-xs font-bold uppercase tracking-wide text-ink-500">Based in</dt>
                 <dd>{addressLocality}, {addressRegion} — serving Omaha &amp; Southeast Nebraska lakes</dd>
               </div>
+              <div>
+                <dt class="text-xs font-bold uppercase tracking-wide text-ink-500">Hours</dt>
+                <dd>{business.hoursDisplay}</dd>
+              </div>
             </dl>
             <div class="mt-6 overflow-hidden rounded-xl border border-ink-200">
               <iframe title="Map of Outback Construction's service area" src={mapSrc} loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="aspect-video w-full border-0"></iframe>

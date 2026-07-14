@@ -21,12 +21,11 @@ const {
   description,
   canonicalPath,
   noindex = false,
-  ogImage = '/og-default.png',
+  ogImage = '/og-default.jpg',
   schemaGraph = [],
 } = Astro.props;
 
 const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, Astro.site);
-// TODO[MATT]: supply a real default OpenGraph image at public/og-default.jpg (1200×630).
 const ogImageURL = new URL(ogImage, Astro.site);
 
 // GTM container — loads GTM + Consent Mode v2 + phone-click / generate_lead events.

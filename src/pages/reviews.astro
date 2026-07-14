@@ -12,7 +12,7 @@ const description =
   'Read what Nebraska lakefront homeowners say about Outback Construction — 5.0★ on Google. Owner-operated marine construction since 1999.';
 
 const businessId = `${business.url}/#business`;
-const reviewSchema = reviews.featured.map((r) => ({
+const reviewSchema = reviews.all.map((r) => ({
   '@type': 'Review',
   author: { '@type': 'Person', name: r.author },
   reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
@@ -57,7 +57,7 @@ const reviewLink = 'https://www.google.com/maps/search/?api=1&query=Outback+Cons
   <section class="bg-white">
     <div class="mx-auto max-w-6xl px-4 py-16 lg:px-6">
       <div class="grid gap-6 md:grid-cols-2">
-        {reviews.featured.map((r, i) => (
+        {reviews.all.map((r, i) => (
           <figure
             data-reveal
             style={`--reveal-delay:${i * 80}ms`}
@@ -73,7 +73,6 @@ const reviewLink = 'https://www.google.com/maps/search/?api=1&query=Outback+Cons
           </figure>
         ))}
       </div>
-      <Fragment set:html={`<!-- TODO[MATT]: display all six Google reviews in full — pull the remaining reviews from the Google Business Profile, first name + last initial. -->`} />
 
     </div>
   </section>

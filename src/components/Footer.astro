@@ -25,6 +25,17 @@ const { streetAddress, addressLocality, addressRegion, postalCode } = business.a
             <a href={`mailto:${business.email}`} class="hover:text-red-500">{business.email}</a>
           </div>
         </address>
+        {business.sameAs && business.sameAs.length > 0 && (
+          <a
+            href={business.sameAs[0]}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${business.shortName} on Facebook`}
+            class="mt-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-ink-300 transition hover:border-red-500 hover:text-white"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.5-1.5H17V3.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.2H7.6V13h2.9v8h3z" /></svg>
+          </a>
+        )}
       </div>
 
       <!-- Services -->

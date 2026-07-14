@@ -47,10 +47,10 @@
     "button": "Get a Shoreline Assessment",
     "supportLine": "Talk directly with Matt — honest answers, no pressure."
   },
-  "sameAs": [],
+  "sameAs": ["https://www.facebook.com/mh.outback"],
   "openingHoursSpecification": [],
   "_todoMatt": [
-    "sameAs: add Google Business Profile (Maps) URL and Facebook URL.",
+    "sameAs: Facebook added; still add the Google Business Profile (Maps) URL.",
     "openingHoursSpecification: confirm business hours for LocalBusiness schema.",
     "geo: confirm exact coordinates (approximate Colon, NE used).",
     "rating.reviewCount (6) is used in schema only; UI shows '5.0 on Google' with no count per content.md. Confirm count as reviews grow."

@@ -5,13 +5,35 @@
       "author": "Kim L."
     },
     {
-      "quote": "My seawall was repaired in one day with no damage to my sprinkler lines and minimal damage to my lawn.",
-      "author": "K.B."
+      "quote": "Matt and his crew did a very nice job at an affordable price. My seawall was repaired in one day with no damage to my sprinkler lines and minimal damage to my lawn.",
+      "author": "K. Brown"
     },
     {
-      "quote": "Matt and his crew did a beautiful job on my seawall. He uses top quality materials, very good at keeping in budget and completed the work as promised.",
+      "quote": "Matt and his crew did a beautiful job on my seawall. He uses top quality materials, very good at keeping in budget and completed the work as promised in two days.",
       "author": "Dee M."
     }
   ],
-  "_todoMatt": "Reviews page (/reviews) needs all six Google reviews in full, pulled from GBP, first name + last initial. Only these three featured quotes are in content.md."
+  "all": [
+    {
+      "quote": "Matt and his crew did a very nice job at an affordable price. My seawall was repaired in one day with no damage to my sprinkler lines and minimal damage to my lawn. I appreciate this work following storm damage to a substandard existing seawall.",
+      "author": "K. Brown"
+    },
+    {
+      "quote": "Matt and his crew did a beautiful job on my seawall. He uses top quality materials, very good at keeping in budget and completed the work as promised in two days. I don't even want to walk on my beach, Oscar did such a great job making it look pretty! I highly recommend Matt to build a seawall, clean up beach. He's the best.",
+      "author": "Dee M."
+    },
+    {
+      "quote": "Matt and his crew repaired my seawall on my lake front property. They are top notch! Matt was informative on the process, provided quality work. I would highly recommend Outback Construction.",
+      "author": "Teresa W."
+    },
+    {
+      "quote": "The Team at Outback did a great job dredging my floating shore station. They were on time and professional.",
+      "author": "Ed D."
+    },
+    {
+      "quote": "Matt was very professional and returned all calls in an extremely quick fashion. He did everything he said he was going to do and more. The project turned out better than we could have imagined.",
+      "author": "Kim L."
+    }
+  ],
+  "_note": "5.0 from 6 Google reviews. The 6th (Andy N., 5 stars, ~4 yrs ago) is a rating with no written text, so it's counted in the aggregate but has no card. TODO[MATT]: add the direct g.page write-review link."
 }

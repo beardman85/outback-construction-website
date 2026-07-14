@@ -330,9 +330,31 @@ async function handleLead(request: Request, env: Env): Promise<Response> {
   return wantsJson ? jsonResponse({ ok: true }) : seeOther('/thank-you', request);
 }
 
+// 301 redirects from the previous Squarespace site's indexed URLs → the new
+// /services/* structure, so ranking/backlink equity carries over. Keys are
+// matched case-insensitively with any trailing slash stripped.
+const LEGACY_REDIRECTS: Record<string, string> = {
+  '/seawall-construction': '/services/seawalls',
+  '/beach-reclamation': '/services/beach-reclamation',
+  '/retaining-walls-omaha-ne': '/services/retaining-walls',
+  '/docks': '/services/boat-docks',
+  '/lake-dock-building-and-repair-services-in-omaha-ne': '/services/boat-docks',
+  '/residential-boat-docks': '/services/boat-docks',
+  '/barge-work': '/services/barge-work',
+  '/park-and-commercial-lake-services': '/services',
+};
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
+
+    // Legacy URL → new URL 301s (preserve SEO from the old site).
+    const normalized = url.pathname.replace(/\/+$/, '').toLowerCase() || '/';
+    const redirectTo = LEGACY_REDIRECTS[normalized];
+    if (redirectTo) {
+      return Response.redirect(new URL(redirectTo, url.origin).toString(), 301);
+    }
+
     if (url.pathname === '/api/lead') {
       if (request.method === 'POST') return handleLead(request, env);
       return new Response('Method Not Allowed', { status: 405, headers: { allow: 'POST' } });

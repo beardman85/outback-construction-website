@@ -15,7 +15,7 @@ const { heading, body, showEmail = false } = Astro.props;
   <div class="mx-auto max-w-4xl px-4 py-16 text-center lg:px-6">
     <h2 class="font-heading text-2xl font-extrabold tracking-tight sm:text-3xl">{heading}</h2>
     {body && <p class="mx-auto mt-4 max-w-2xl text-red-50">{body}</p>}
-    <p class="mt-3 text-sm text-red-100">{business.cta.supportLine}</p>
+    <p class="mt-3 text-sm text-red-50">{business.cta.supportLine}</p>
 
     <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
       <a
@@ -34,7 +34,7 @@ const { heading, body, showEmail = false } = Astro.props;
     </div>
 
     {showEmail && (
-      <p class="mt-4 text-sm text-red-100">
+      <p class="mt-4 text-sm text-red-50">
         <a href={`mailto:${business.email}`} class="underline hover:text-white">{business.email}</a>
       </p>
     )}

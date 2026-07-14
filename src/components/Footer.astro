@@ -23,12 +23,12 @@ const { streetAddress, addressLocality, addressRegion, postalCode } = business.a
           <div>{streetAddress}</div>
           <div>{addressLocality}, {addressRegion} {postalCode}</div>
           <div>
-            <a href={business.telephoneHref} data-phone-cta class="font-bold text-white hover:text-red-500">
+            <a href={business.telephoneHref} data-phone-cta class="font-bold text-white hover:text-red-400">
               {business.telephoneDisplay}
             </a>
           </div>
           <div>
-            <a href={`mailto:${business.email}`} class="hover:text-red-500">{business.email}</a>
+            <a href={`mailto:${business.email}`} class="hover:text-red-400">{business.email}</a>
           </div>
           <div class="pt-1 text-ink-400">{business.hoursDisplay}</div>
         </address>
@@ -47,7 +47,7 @@ const { streetAddress, addressLocality, addressRegion, postalCode } = business.a
 
       <!-- Services -->
       <nav aria-label="Services">
-        <h2 class="text-sm font-bold uppercase tracking-wide text-red-500">Services</h2>
+        <h2 class="text-sm font-bold uppercase tracking-wide text-red-400">Services</h2>
         <ul class="mt-4 space-y-2 text-sm">
           {services.map((s) => (
             <li><a href={`/services/${s.slug}`} class="text-ink-300 hover:text-white">{s.navLabel}</a></li>
@@ -57,7 +57,7 @@ const { streetAddress, addressLocality, addressRegion, postalCode } = business.a
 
       <!-- Service Areas -->
       <nav aria-label="Service areas">
-        <h2 class="text-sm font-bold uppercase tracking-wide text-red-500">Service Areas</h2>
+        <h2 class="text-sm font-bold uppercase tracking-wide text-red-400">Service Areas</h2>
         <ul class="mt-4 space-y-2 text-sm">
           {locations.map((l) => (
             <li><a href={`/locations/${l.slug}`} class="text-ink-300 hover:text-white">{l.navLabel}</a></li>
@@ -68,7 +68,7 @@ const { streetAddress, addressLocality, addressRegion, postalCode } = business.a
       <!-- Company + CTA -->
       <div>
         <nav aria-label="Company">
-          <h2 class="text-sm font-bold uppercase tracking-wide text-red-500">Company</h2>
+          <h2 class="text-sm font-bold uppercase tracking-wide text-red-400">Company</h2>
           <ul class="mt-4 space-y-2 text-sm">
             <li><a href="/our-work" class="text-ink-300 hover:text-white">Our Work</a></li>
             <li><a href="/reviews" class="text-ink-300 hover:text-white">Reviews</a></li>
@@ -85,7 +85,7 @@ const { streetAddress, addressLocality, addressRegion, postalCode } = business.a
       </div>
     </div>
 
-    <div class="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-ink-500 sm:flex-row sm:items-center sm:justify-between">
+    <div class="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-ink-400 sm:flex-row sm:items-center sm:justify-between">
       <p>&copy; {year} {business.name}. Owner-operated since {business.foundingYear}. {addressLocality}, {addressRegion}.</p>
       <div class="flex gap-4">
         <a href="/privacy-policy" class="hover:text-white">Privacy Policy</a>

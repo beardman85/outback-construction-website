@@ -16,6 +16,9 @@
   /* Brand red */
   --color-red-50: #fdecec;
   --color-red-100: #f9caca;
+  /* red-400 is a lighter red reserved for eyebrows/labels on DARK (ink-950)
+     sections — it clears WCAG AA (≈5.5:1 on black) where red-500 falls short. */
+  --color-red-400: #ef4444;
   --color-red-500: #e11414;
   --color-red-600: #ce0202;
   --color-red-700: #a80000;
@@ -28,6 +31,8 @@
   --color-ink-700: #333333;
   --color-ink-600: #4d4d4d;
   --color-ink-500: #666666;
+  /* ink-400 clears AA on black (≈6:1) for muted footer text; #666 does not. */
+  --color-ink-400: #8c8c8c;
   --color-ink-300: #b3b3b3;
   --color-ink-200: #e5e5e5;
   --color-ink-100: #f2f2f2;

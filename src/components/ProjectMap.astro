@@ -21,7 +21,7 @@ const communities = [...new Set(jobs.map((j) => j.community))];
 <section class="bg-ink-950 text-white">
   <div class="mx-auto max-w-7xl px-4 py-16 lg:px-6">
     <div class="max-w-2xl">
-      <p class="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-red-500">
+      <p class="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-red-400">
         <span class="inline-block h-px w-8 bg-red-500"></span>
         Project map
       </p>
@@ -68,7 +68,9 @@ const communities = [...new Set(jobs.map((j) => j.community))];
 
     const bounds: [number, number][] = [];
     jobs.forEach((j: any) => {
-      const m = L.marker([j.lat, j.lng], { icon }).addTo(map);
+      // title/alt give the interactive marker an accessible name (WCAG + AI agents).
+      const label = `${j.title} — ${j.service} in ${j.community}`;
+      const m = L.marker([j.lat, j.lng], { icon, title: label, alt: label }).addTo(map);
       m.bindPopup(
         `<div style="width:220px;font-family:system-ui,sans-serif">
            <img src="${j.thumb}" alt="" style="width:100%;height:130px;object-fit:cover;border-radius:6px;display:block" loading="lazy">

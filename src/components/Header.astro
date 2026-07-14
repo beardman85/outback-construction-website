@@ -18,13 +18,13 @@ import locations from '../data/locations.json';
 
     <!-- Desktop nav -->
     <nav aria-label="Primary" class="hidden items-center gap-1 lg:flex">
-      <a href="/" class="rounded px-3 py-2 text-sm font-semibold hover:text-red-500">Home</a>
+      <a href="/" class="rounded px-3 py-2 text-sm font-semibold hover:text-red-400">Home</a>
 
       <!-- Services dropdown (CSS-only) -->
       <div class="group relative">
         <a
           href="/services"
-          class="flex items-center gap-1 rounded px-3 py-2 text-sm font-semibold hover:text-red-500 group-focus-within:text-red-500"
+          class="flex items-center gap-1 rounded px-3 py-2 text-sm font-semibold hover:text-red-400 group-focus-within:text-red-400"
         >
           Services
           <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="currentColor"><path d="M2 4l4 4 4-4z" /></svg>
@@ -40,7 +40,7 @@ import locations from '../data/locations.json';
       <div class="group relative">
         <a
           href="/service-areas"
-          class="flex items-center gap-1 rounded px-3 py-2 text-sm font-semibold hover:text-red-500 group-focus-within:text-red-500"
+          class="flex items-center gap-1 rounded px-3 py-2 text-sm font-semibold hover:text-red-400 group-focus-within:text-red-400"
         >
           Service Areas
           <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="currentColor"><path d="M2 4l4 4 4-4z" /></svg>
@@ -52,15 +52,15 @@ import locations from '../data/locations.json';
         </div>
       </div>
 
-      <a href="/our-work" class="rounded px-3 py-2 text-sm font-semibold hover:text-red-500">Our Work</a>
-      <a href="/reviews" class="rounded px-3 py-2 text-sm font-semibold hover:text-red-500">Reviews</a>
-      <a href="/about" class="rounded px-3 py-2 text-sm font-semibold hover:text-red-500">About</a>
-      <a href="/contact" class="rounded px-3 py-2 text-sm font-semibold hover:text-red-500">Contact</a>
+      <a href="/our-work" class="rounded px-3 py-2 text-sm font-semibold hover:text-red-400">Our Work</a>
+      <a href="/reviews" class="rounded px-3 py-2 text-sm font-semibold hover:text-red-400">Reviews</a>
+      <a href="/about" class="rounded px-3 py-2 text-sm font-semibold hover:text-red-400">About</a>
+      <a href="/contact" class="rounded px-3 py-2 text-sm font-semibold hover:text-red-400">Contact</a>
     </nav>
 
     <!-- Header CTA -->
     <div class="hidden items-center gap-3 lg:flex">
-      <a href={business.telephoneHref} data-phone-cta class="text-sm font-bold text-white hover:text-red-500">
+      <a href={business.telephoneHref} data-phone-cta class="text-sm font-bold text-white hover:text-red-400">
         {business.telephoneDisplay}
       </a>
       <a
@@ -89,11 +89,11 @@ import locations from '../data/locations.json';
       class="absolute left-0 top-full hidden max-h-[80vh] w-full overflow-y-auto border-t border-white/10 bg-ink-950 px-4 py-4 peer-checked:block lg:hidden"
     >
       <a href="/" class="block rounded px-3 py-2 text-sm font-semibold hover:bg-white/10">Home</a>
-      <a href="/services" class="block px-3 pb-1 pt-3 text-xs font-bold uppercase tracking-wide text-red-500">Services</a>
+      <a href="/services" class="block px-3 pb-1 pt-3 text-xs font-bold uppercase tracking-wide text-red-400">Services</a>
       {services.map((s) => (
         <a href={`/services/${s.slug}`} class="block rounded px-3 py-2 text-sm hover:bg-white/10">{s.navLabel}</a>
       ))}
-      <a href="/service-areas" class="block px-3 pb-1 pt-3 text-xs font-bold uppercase tracking-wide text-red-500">Service Areas</a>
+      <a href="/service-areas" class="block px-3 pb-1 pt-3 text-xs font-bold uppercase tracking-wide text-red-400">Service Areas</a>
       {locations.map((l) => (
         <a href={`/locations/${l.slug}`} class="block rounded px-3 py-2 text-sm hover:bg-white/10">{l.navLabel}</a>
       ))}

@@ -102,6 +102,9 @@ const GTM_ID = 'GTM-N3986WW9';
 
     <Schema graph={schemaGraph} />
 
+    {/* Per-page head extras, e.g. an LCP image preload (see homepage hero). */}
+    <slot name="head" />
+
     {/* No-JS + crawler fallback: never hide content behind the reveal animation. */}
     <noscript set:html={`<style>[data-reveal]{opacity:1 !important;transform:none !important;}</style>`} />
   </head>

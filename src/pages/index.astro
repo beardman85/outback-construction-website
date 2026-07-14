@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import ReviewStrip from '../components/ReviewStrip.astro';
 import ServiceIcon from '../components/ServiceIcon.astro';
@@ -19,6 +19,11 @@ import lakeSunset from '../assets/lake-sunset.png'; // final CTA band (decorativ
 const title = 'Marine Construction Contractor | Omaha & SE Nebraska | Outback Construction';
 const description =
   'Boat docks, seawalls, retaining walls & beach reclamation for Nebraska lakefront properties. Owner-operated since 1999. 5.0★ rated. Call (402) 456-7968.';
+
+// Preload the LCP hero image so it downloads immediately (before the parser
+// reaches the <img>). Options MUST match the hero <Image> below so the browser
+// reuses the same responsive file — no double fetch.
+const heroPreload = await getImage({ src: projHero, widths: [768, 1200, 1600], sizes: '100vw' });
 
 const businessId = `${business.url}/#business`;
 const reviewSchema = reviews.featured.map((r) => ({
@@ -53,6 +58,15 @@ const gallery = [
 ];
 ---
 <Base title={title} description={description} canonicalPath="/" schemaGraph={reviewSchema}>
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    href={heroPreload.src}
+    imagesrcset={heroPreload.srcSet.attribute}
+    imagesizes="100vw"
+    fetchpriority="high"
+  />
   <!-- ================= HERO ================= -->
   <section class="relative isolate flex min-h-[70vh] items-center overflow-hidden bg-ink-950 text-white">
     <Image
@@ -69,7 +83,7 @@ const gallery = [
 
     <div class="mx-auto w-full max-w-7xl px-4 py-20 lg:px-6">
       <div class="max-w-3xl">
-        <p data-reveal class="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-red-500">
+        <p data-reveal class="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-red-400">
           <span class="inline-block h-px w-8 bg-red-500"></span>
           Marine Construction · Since 1999
         </p>

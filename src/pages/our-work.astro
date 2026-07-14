@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import CTABlock from '../components/CTABlock.astro';
 import ProjectMap from '../components/ProjectMap.astro';
@@ -30,14 +30,26 @@ const projects = [
 
 const filters = [{ slug: 'all', label: 'All projects' }, ...services.map((s) => ({ slug: s.slug, label: s.navLabel }))];
 const labelFor = (slug: string) => services.find((s) => s.slug === slug)?.navLabel ?? '';
+
+// Preload the LCP hero image (matches the hero <Image> below → single fetch).
+const heroPreload = await getImage({ src: projInvestment, widths: [768, 1200, 1600], sizes: '100vw' });
 ---
 <Base title={title} description={description} canonicalPath="/our-work">
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    href={heroPreload.src}
+    imagesrcset={heroPreload.srcSet.attribute}
+    imagesizes="100vw"
+    fetchpriority="high"
+  />
   <!-- ================= HERO ================= -->
   <section class="relative isolate flex min-h-[45vh] items-end overflow-hidden bg-ink-950 text-white">
     <Image src={projInvestment} alt="Aerial of an Outback Construction shoreline project on a Southeast Nebraska lake" class="absolute inset-0 -z-20 h-full w-full object-cover" widths={[768, 1200, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950 via-ink-950/70 to-ink-950/30"></div>
     <div class="mx-auto w-full max-w-7xl px-4 py-14 lg:px-6 lg:py-20">
-      <p class="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-red-500">
+      <p class="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-red-400">
         <span class="inline-block h-px w-8 bg-red-500"></span>
         Our Work
       </p>

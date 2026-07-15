@@ -60,6 +60,20 @@ const breadcrumb = {
 
   <section class="bg-white">
     <div class="mx-auto max-w-7xl px-4 py-16 lg:px-6">
+      <div data-reveal class="mx-auto mb-12 max-w-3xl text-lg text-ink-700">
+        <p>
+          Outback Construction is based in Colon and works the private and sandpit lakes across
+          the Omaha metro and Southeast Nebraska — the highest concentration of lakefront property
+          in the state. From the Ginger lakes and Riverside in Valley to Woodcliff near Fremont,
+          Newport Landing in Bennington, and Beaver Lake down toward Plattsmouth, we build and repair
+          <a class="ob-link" href="/services/boat-docks">boat docks</a>,
+          <a class="ob-link" href="/services/seawalls">seawalls</a>,
+          <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, and
+          <a class="ob-link" href="/services/beach-reclamation">beaches</a> for the specific
+          conditions of Nebraska water: sandy soils, ice heave, boat wake, and spring water swings.
+        </p>
+        <p class="mt-4">Pick your area below for the lakes we serve and the work we do there.</p>
+      </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {locations.map((l, i) => (
           <a href={`/locations/${l.slug}`} data-reveal style={`--reveal-delay:${i * 60}ms`} class="group relative block overflow-hidden rounded-xl">

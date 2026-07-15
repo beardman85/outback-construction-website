@@ -13,10 +13,12 @@ const { streetAddress, addressLocality, addressRegion, postalCode } = business.a
     <span class="flex-1 bg-white"></span>
     <span class="w-1/3 bg-red-600"></span>
   </div>
-  <div class="mx-auto max-w-7xl px-4 py-14 lg:px-6">
-    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+  <div class="mx-auto max-w-7xl px-4 py-10 lg:px-6 lg:py-14">
+    {/* Mobile: 2 cols so Services + Service Areas sit side by side (keeps the
+        footer short); NAP + Company span the full row. md+: original layout. */}
+    <div class="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
       <!-- NAP block (from business.json — never hardcoded) -->
-      <div>
+      <div class="col-span-2 md:col-span-1">
         <img src="/brand/logo-white.png" alt={business.name} width="200" height="49" class="h-11 w-auto" />
         <p class="mt-4 max-w-xs text-sm text-ink-300">{business.tagline}</p>
         <address class="mt-4 space-y-1 text-sm not-italic text-ink-300">
@@ -66,7 +68,7 @@ const { streetAddress, addressLocality, addressRegion, postalCode } = business.a
       </nav>
 
       <!-- Company + CTA -->
-      <div>
+      <div class="col-span-2 md:col-span-1">
         <nav aria-label="Company">
           <h2 class="text-sm font-bold uppercase tracking-wide text-red-400">Company</h2>
           <ul class="mt-4 space-y-2 text-sm">
@@ -85,7 +87,7 @@ const { streetAddress, addressLocality, addressRegion, postalCode } = business.a
       </div>
     </div>
 
-    <div class="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-ink-400 sm:flex-row sm:items-center sm:justify-between">
+    <div class="mt-10 flex flex-col items-center gap-3 border-t border-white/10 pt-6 text-center text-xs text-ink-400 sm:mt-12 sm:flex-row sm:items-center sm:justify-between sm:text-left">
       <p>&copy; {year} {business.name}. Owner-operated since {business.foundingYear}. {addressLocality}, {addressRegion}.</p>
       <p>Powered by <a href="https://beardmandesign.com" target="_blank" rel="noopener noreferrer" class="font-semibold text-ink-300 transition hover:text-white">Beardman Design LLC</a></p>
       <div class="flex gap-4">

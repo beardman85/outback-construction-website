@@ -334,6 +334,9 @@ async function handleLead(request: Request, env: Env): Promise<Response> {
 // /services/* structure, so ranking/backlink equity carries over. Keys are
 // matched case-insensitively with any trailing slash stripped.
 const LEGACY_REDIRECTS: Record<string, string> = {
+  // Old WordPress page slugs (Search Console still has these indexed).
+  '/contact-us': '/contact',
+  '/about-us': '/about',
   '/seawall-construction': '/services/seawalls',
   '/beach-reclamation': '/services/beach-reclamation',
   '/retaining-walls-omaha-ne': '/services/retaining-walls',

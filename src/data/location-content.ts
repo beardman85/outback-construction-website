@@ -74,12 +74,12 @@ export const locationContent: Record<string, LocationContent> = {
     ],
   },
   columbus: {
-    metaDescription: `Marine construction for Columbus, NE lake properties — Wagners Lake & the area's sandpit lakes. Seawalls, boat docks, retaining walls & beach reclamation since 1998.`,
+    metaDescription: `Marine construction for Columbus, NE lake properties — Wagners Lake, Lake Ernst & the area's sandpit lakes. Seawalls, docks, retaining walls & beaches since 1998.`,
     mapQuery: `Columbus, NE`,
     neighbors: ['fremont', 'valley'],
     localFaqTodo: `3–5 Columbus-specific — other Columbus-area lakes served, typical shoreline conditions, scheduling/travel`,
     paragraphs: [
-      `Columbus sits where the Loup runs into the Platte, and the private sandpit lakes around it are exactly the water Outback has worked since 1998 — sandy soils, active boat traffic, and shorelines that need real engineering to hold. We've built a steel seawall and tiered retaining wall on <strong>Wagners Lake</strong>, plus a large seawall-and-beach project west of town<!-- TODO[MATT]: confirm the lake name for the Polk County / Duncan-area job -->, and it's an easy run from our shop in Colon.`,
+      `Columbus sits where the Loup runs into the Platte, and the private sandpit lakes around it are exactly the water Outback has worked since 1998 — sandy soils, active boat traffic, and shorelines that need real engineering to hold. We've built a steel seawall and tiered retaining wall on <strong>Wagners Lake</strong>, and a large seawall-and-beach build out at <strong>Lake Ernst</strong> near Duncan. It's an easy run from our shop in Colon.`,
       `What we handle around Columbus: <a class="ob-link" href="/services/seawalls">seawall construction and storm repair</a>, custom <a class="ob-link" href="/services/boat-docks">boat docks and dock repair</a>, waterfront <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a>, and <a class="ob-link" href="/services/barge-work">barge work</a> for lots equipment can't reach by land.`,
     ],
   },

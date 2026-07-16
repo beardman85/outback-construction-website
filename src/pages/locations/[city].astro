@@ -19,6 +19,9 @@ import lakeSunset from '../../assets/lake-sunset.png';
 import woodcliffHero from '../../assets/jobs/job-08.jpg'; // Woodcliff — seawall & shoreline access
 import columbusHero from '../../assets/jobs/job-04.jpg'; // Wagners Lake, Columbus — seawall & retaining wall
 import beaverLakeHero from '../../assets/jobs/job-11.jpg'; // Beaver Lake — seawall replacement & dock
+import valleyHero from '../../assets/jobs/job-00.jpg'; // Valley — seawall, beach & dock (golden hour)
+import omahaHero from '../../assets/jobs/job-07.jpg'; // Hawaiian Village, Papillion — seawall & sand beach
+import springfieldHero from '../../assets/jobs/job-14.jpg'; // Sandy Pointe, Springfield — seawall & retaining wall
 
 export function getStaticPaths() {
   return locations.map((l) => ({ params: { city: l.slug }, props: { location: l } }));
@@ -29,15 +32,15 @@ const content = locationContent[location.slug];
 
 // Vary hero imagery so no two location pages look identical.
 const heroImages: Record<string, ImageMetadata> = {
-  omaha: dockBoat,
-  valley: heroDock,
+  omaha: omahaHero,
+  valley: valleyHero,
   waterloo: dockDawn,
   fremont: lakehomeDusk,
   woodcliff: woodcliffHero,
   columbus: columbusHero,
   bennington: pierSunset,
   'newport-landing': dockBoat,
-  springfield: lakeSunset,
+  springfield: springfieldHero,
   plattsmouth: heroDock,
   'beaver-lake': beaverLakeHero,
 };

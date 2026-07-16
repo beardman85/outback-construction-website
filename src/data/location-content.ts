@@ -24,7 +24,7 @@ export const locationContent: Record<string, LocationContent> = {
     neighbors: ['bennington', 'valley', 'springfield'],
     localFaqTodo: `3–5 Omaha-specific — west-metro HOA lake standards, sandpit vs. reservoir shorelines, permitting`,
     paragraphs: [
-      `Omaha's private lake living is concentrated on the metro's west edge — communities like <strong>Mallard Landing</strong>, West Shores, West Bay Woods, Cedar Creek near Lake Cunningham, and Paradise Lakes to the northwest.<!-- TODO[MATT]: confirm the Omaha-metro lake communities you serve --> What they share: owners who've invested heavily in their waterfront and need a contractor who specializes in it.`,
+      `Omaha's private lake living runs from the metro's west edge — communities like <strong>Mallard Landing</strong>, West Shores, West Bay Woods, Cedar Creek near Lake Cunningham, and Paradise Lakes to the northwest — down to <strong>Hawaiian Village</strong> in Papillion, where we built a steel seawall and sand beach.<!-- TODO[MATT]: confirm the Omaha-metro lake communities you serve --> What they share: owners who've invested heavily in their waterfront and need a contractor who specializes in it.`,
       `That specialization is the whole company. Docks, seawalls, retaining walls, barge work, and beach reclamation — marine construction is all Outback has done since 1998. Omaha homeowners typically find us after the general contractor says "we don't really do water" — or after the cheap fix from a few years ago starts leaning.`,
       `We handle <a class="ob-link" href="/services/boat-docks">boat docks and dock repair</a>, <a class="ob-link" href="/services/seawalls">seawalls</a>, <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a>, and <a class="ob-link" href="/services/barge-work">barge work</a> across the metro. For the sandpit-lake communities just west — Bluewater, Flatwater, and the Ginger lakes — see our <a class="ob-link" href="/locations/valley">Valley lake communities</a> page.`,
     ],
@@ -74,12 +74,12 @@ export const locationContent: Record<string, LocationContent> = {
     ],
   },
   columbus: {
-    metaDescription: `Marine construction for Columbus, NE lake properties — seawalls, boat docks, retaining walls & beach reclamation on the area's sandpit lakes. Owner-operated since 1998.`,
+    metaDescription: `Marine construction for Columbus, NE lake properties — Wagners Lake & the area's sandpit lakes. Seawalls, boat docks, retaining walls & beach reclamation since 1998.`,
     mapQuery: `Columbus, NE`,
     neighbors: ['fremont', 'valley'],
-    localFaqTodo: `3–5 Columbus-specific — name the Columbus-area lakes/communities, typical shoreline conditions, scheduling/travel`,
+    localFaqTodo: `3–5 Columbus-specific — other Columbus-area lakes served, typical shoreline conditions, scheduling/travel`,
     paragraphs: [
-      `Columbus sits where the Loup runs into the Platte, and the private sandpit lakes around it are exactly the water Outback has worked since 1998<!-- TODO[MATT]: name the Columbus-area lake communities you serve --> — sandy soils, active boat traffic, and shorelines that need real engineering to hold. We've built seawall and dock work on Columbus water, and it's an easy run from our shop in Colon.`,
+      `Columbus sits where the Loup runs into the Platte, and the private sandpit lakes around it are exactly the water Outback has worked since 1998 — sandy soils, active boat traffic, and shorelines that need real engineering to hold. We've built a steel seawall and tiered retaining wall on <strong>Wagners Lake</strong>, plus a large seawall-and-beach project west of town<!-- TODO[MATT]: confirm the lake name for the Polk County / Duncan-area job -->, and it's an easy run from our shop in Colon.`,
       `What we handle around Columbus: <a class="ob-link" href="/services/seawalls">seawall construction and storm repair</a>, custom <a class="ob-link" href="/services/boat-docks">boat docks and dock repair</a>, waterfront <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a>, and <a class="ob-link" href="/services/barge-work">barge work</a> for lots equipment can't reach by land.`,
     ],
   },
@@ -132,7 +132,7 @@ export const locationContent: Record<string, LocationContent> = {
     neighbors: ['plattsmouth', 'springfield'],
     localFaqTodo: `3–5 Beaver Lake-specific — Association approval process & standards, wave/ice damage, barge access for tight lots`,
     paragraphs: [
-      `Beaver Lake is one of Southeast Nebraska's largest private lake communities — hundreds of waterfront homes, serious boat traffic, and miles of shoreline that take real wave energy all summer. That combination is hard on seawalls, beaches, and docks, and it's exactly the work Outback has specialized in since 1998.`,
+      `Beaver Lake is one of Southeast Nebraska's largest private lake communities — hundreds of waterfront homes, serious boat traffic, and miles of shoreline that take real wave energy all summer. That combination is hard on seawalls, beaches, and docks, and it's exactly the work Outback has specialized in since 1998. We've done seawall replacement and dock work on Beaver Lake ourselves — tearing out failed timber wall and rebuilding it to hold.`,
       `Beaver Lake is managed by a formal association, and shoreline projects here come with rules, standards, and an approval process. We're familiar with working inside those requirements — planning the project, meeting the association's standards, and building it to last.<!-- TODO[MATT]: confirm Beaver Lake Association approval specifics --> Whether it's a seawall showing its age, a beach that's migrated into the lake, a dock due for a rebuild, or a tight-access lot that needs barge work, we build for Beaver Lake conditions specifically.`,
       `At Beaver Lake we handle <a class="ob-link" href="/services/seawalls">seawall construction and storm repair</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a>, <a class="ob-link" href="/services/boat-docks">boat docks and dock repair</a>, <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, and <a class="ob-link" href="/services/barge-work">barge work</a> for lots equipment can't reach by land.`,
     ],

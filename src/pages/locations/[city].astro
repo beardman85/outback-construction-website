@@ -15,8 +15,10 @@ import dockDawn from '../../assets/dock-dawn.jpg';
 import lakehomeDusk from '../../assets/lakehome-dusk.jpg';
 import pierSunset from '../../assets/pier-sunset.jpg';
 import lakeSunset from '../../assets/lake-sunset.png';
-import woodcliffHero from '../../assets/jobs/job-05.jpg'; // real Woodcliff seawall & beach project
-import columbusHero from '../../assets/jobs/job-11.jpg'; // real Columbus seawall & dock project
+// Real, GPS-verified project photos (ids match src/data/jobs.ts).
+import woodcliffHero from '../../assets/jobs/job-08.jpg'; // Woodcliff — seawall & shoreline access
+import columbusHero from '../../assets/jobs/job-04.jpg'; // Wagners Lake, Columbus — seawall & retaining wall
+import beaverLakeHero from '../../assets/jobs/job-11.jpg'; // Beaver Lake — seawall replacement & dock
 
 export function getStaticPaths() {
   return locations.map((l) => ({ params: { city: l.slug }, props: { location: l } }));
@@ -37,7 +39,7 @@ const heroImages: Record<string, ImageMetadata> = {
   'newport-landing': dockBoat,
   springfield: lakeSunset,
   plattsmouth: heroDock,
-  'beaver-lake': dockDawn,
+  'beaver-lake': beaverLakeHero,
 };
 const heroImg = heroImages[location.slug] ?? heroDock;
 

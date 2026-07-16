@@ -154,7 +154,7 @@ function autoReplyEmail(name: string): { subject: string; html: string; text: st
     <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border-radius:8px;overflow:hidden;">
       <tr><td style="background:#0d0d0d;padding:22px 28px;text-align:center;">
         <span style="color:#fff;font-size:20px;font-weight:bold;letter-spacing:1px;">OUTBACK CONSTRUCTION</span>
-        <div style="color:#ce0202;font-size:11px;font-weight:bold;letter-spacing:2px;margin-top:4px;">MARINE CONSTRUCTION · SINCE 1999</div>
+        <div style="color:#ce0202;font-size:11px;font-weight:bold;letter-spacing:2px;margin-top:4px;">MARINE CONSTRUCTION · SINCE 1998</div>
       </td></tr>
       <tr><td style="height:4px;background:#ce0202;font-size:0;line-height:0;">&nbsp;</td></tr>
       <tr><td style="padding:32px 28px;">

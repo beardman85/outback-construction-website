@@ -73,6 +73,16 @@ export const locationContent: Record<string, LocationContent> = {
       `At Woodcliff we handle the full range of marine construction: <a class="ob-link" href="/services/seawalls">seawall construction and storm repair</a>, custom <a class="ob-link" href="/services/boat-docks">boat docks and dock repair</a>, waterfront <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a> for swim frontage, and <a class="ob-link" href="/services/barge-work">barge work</a> for tight-access lots. Owner Matt Wesch walks every Woodcliff shoreline personally.`,
     ],
   },
+  columbus: {
+    metaDescription: `Marine construction for Columbus, NE lake properties — seawalls, boat docks, retaining walls & beach reclamation on the area's sandpit lakes. Owner-operated since 1998.`,
+    mapQuery: `Columbus, NE`,
+    neighbors: ['fremont', 'valley'],
+    localFaqTodo: `3–5 Columbus-specific — name the Columbus-area lakes/communities, typical shoreline conditions, scheduling/travel`,
+    paragraphs: [
+      `Columbus sits where the Loup runs into the Platte, and the private sandpit lakes around it are exactly the water Outback has worked since 1998<!-- TODO[MATT]: name the Columbus-area lake communities you serve --> — sandy soils, active boat traffic, and shorelines that need real engineering to hold. We've built seawall and dock work on Columbus water, and it's an easy run from our shop in Colon.`,
+      `What we handle around Columbus: <a class="ob-link" href="/services/seawalls">seawall construction and storm repair</a>, custom <a class="ob-link" href="/services/boat-docks">boat docks and dock repair</a>, waterfront <a class="ob-link" href="/services/retaining-walls">retaining walls</a>, <a class="ob-link" href="/services/beach-reclamation">beach reclamation</a>, and <a class="ob-link" href="/services/barge-work">barge work</a> for lots equipment can't reach by land.`,
+    ],
+  },
   bennington: {
     metaDescription: `Marine construction for Bennington's lake communities — Newport Landing, Bennington Lake & more. Docks, seawalls, retaining walls & beaches. Owner-operated since 1998.`,
     mapQuery: `Bennington, NE`,

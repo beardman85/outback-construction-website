@@ -13,7 +13,9 @@
  *   LEAD_FROM_EMAIL  (optional) Sender, default "Outback Construction <no-reply@outbackconstruction.net>".
  *   LEAD_BCC_EMAIL   (optional) BCC on the owner notification. Default marketing@bdxomaha.com;
  *                              comma-separate for several; set to "" to disable.
- *   LEAD_WEBHOOK_URL (optional) Also POST the lead JSON here (Zapier/Make/Slack/CRM).
+ *   LEAD_WEBHOOK_URL (optional) Also POST the lead JSON here (GrowthOS/Zapier/CRM).
+ *   LEAD_WEBHOOK_SECRET (optional) If set, sign the webhook body with HMAC-SHA256
+ *                              and send it as `X-BDX-Signature: sha256=<hex>`.
  *
  * TODO[MATT/BUILD]: verify the outbackconstruction.net domain in Resend (SPF/DKIM/
  * DMARC DNS records) so mail from no-reply@ is delivered, then set RESEND_API_KEY +
@@ -26,6 +28,7 @@ interface Env {
   LEAD_FROM_EMAIL?: string;
   LEAD_BCC_EMAIL?: string;
   LEAD_WEBHOOK_URL?: string;
+  LEAD_WEBHOOK_SECRET?: string;
 }
 
 interface Attachment {
@@ -46,6 +49,18 @@ const toE164 = (phone: string) => {
 const sha256Hex = async (input: string) => {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(input));
   return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, '0')).join('');
+};
+// HMAC-SHA256(body) as hex — the lead-webhook signature (Web Crypto; workerd).
+const hmacHex = async (secret: string, body: string) => {
+  const key = await crypto.subtle.importKey(
+    'raw',
+    new TextEncoder().encode(secret),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign'],
+  );
+  const sig = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(body));
+  return Array.from(new Uint8Array(sig)).map((b) => b.toString(16).padStart(2, '0')).join('');
 };
 const arrayBufferToBase64 = (buf: ArrayBuffer) => {
   let binary = '';
@@ -310,13 +325,15 @@ async function handleLead(request: Request, env: Env): Promise<Response> {
       });
     }
 
-    // Optional: mirror the lead to a webhook (CRM/Slack/Zapier)
+    // Optional: mirror the lead to a webhook (GrowthOS lead machine / CRM / Zapier).
+    // When a secret is set, sign the exact body so the receiver can verify it.
     if (env.LEAD_WEBHOOK_URL) {
-      await fetch(env.LEAD_WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(lead),
-      });
+      const body = JSON.stringify(lead);
+      const headers: Record<string, string> = { 'content-type': 'application/json' };
+      if (env.LEAD_WEBHOOK_SECRET) {
+        headers['x-bdx-signature'] = 'sha256=' + (await hmacHex(env.LEAD_WEBHOOK_SECRET, body));
+      }
+      await fetch(env.LEAD_WEBHOOK_URL, { method: 'POST', headers, body });
       delivered = true;
     }
   } catch (err) {

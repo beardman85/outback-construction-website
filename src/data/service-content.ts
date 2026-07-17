@@ -78,7 +78,7 @@ export const serviceContent: Record<string, ServiceContent> = {
     ],
     related: [
       { text: `Protecting a beach behind your wall?`, href: `/services/beach-reclamation` },
-      { text: `Wall further up the bank?`, href: `/services/retaining-walls` },
+      { text: `Waterfront retaining wall up the bank?`, href: `/services/retaining-walls` },
       { text: `Water-access-only site?`, href: `/services/barge-work` },
     ],
     ctaHeading: `Your seawall protects everything above it. Let's make sure it can.`,
@@ -121,7 +121,7 @@ export const serviceContent: Record<string, ServiceContent> = {
 
   'retaining-walls': {
     intro: [
-      `A retaining wall has one job: hold back thousands of pounds of earth, saturated by every rain, frozen and thawed dozens of times a year — and never move. On waterfront properties the stakes are higher, because behind that wall is your yard, and above it is often your home.`,
+      `A retaining wall for a waterfront property takes abuse a backyard wall never will: thousands of pounds of earth behind it, saturated by every rain, frozen and thawed dozens of times a winter — and it can never move. That's what makes a marine retaining wall its own discipline. Behind it is your yard, and above it is often your home.`,
       `"The wall is leaning" is one of the most common calls we get. Here's what we tell people: a leaning wall is not a cosmetic problem. It's a wall that has already started to fail, and the timeline from lean to collapse is set by weather you can't control.`,
     ],
     sections: [
@@ -139,9 +139,17 @@ export const serviceContent: Record<string, ServiceContent> = {
           `We build new waterfront retaining walls, replace failed ones, and — where the structure allows — repair and reinforce walls that are showing early movement. The earlier you call about a lean, the more options (and the smaller the bill).`,
         ],
       },
-      { type: 'todo', note: `wall systems/materials you build — block, boulder, sheet pile, timber, concrete` },
+      {
+        type: 'prose',
+        heading: `Marine retaining wall systems we build`,
+        paragraphs: [
+          `There's no single right wall for the water. The system depends on the wall's height, the soil behind it, how close it sits to the waterline, and the look you're after — so we match it to your site instead of pouring the same wall everywhere. On Southeast Nebraska lakes that's usually segmental block, tiered stone, or armor-stone boulder walls, and every one is engineered backwards from drainage. If the wall sits right at the water's edge, that's <a class="ob-link" href="/services/seawalls">seawall</a> territory — a different structure we also build.<!-- TODO[MATT]: confirm your full list of wall systems + any you don't do -->`,
+        ],
+      },
     ],
     faqs: [
+      { q: `What's the difference between a seawall and a retaining wall?`, a: `A seawall holds back water at the shoreline; a retaining wall holds back earth up the bank behind or above it. Most waterfront properties need both, and they're engineered differently. If your wall is right at the waterline, that's <a class="ob-link" href="/services/seawalls">seawall work</a>.` },
+      { q: `How much does a waterfront retaining wall cost?`, a: `It depends on the wall's height and length, the system it needs, site access, and how much failed wall has to come out first. We give you a straight number after we walk the shoreline — not a guess over the phone.` },
       { q: `My wall is leaning. How urgent is this?`, a: `Worth a professional look now, not next year. Some leans are stable for a while; others are one wet spring from letting go. The assessment tells you which you have — and if it can wait, we'll say so.` },
       { q: `Can a leaning wall be repaired, or does it have to be replaced?`, a: `Depends on cause and construction. Early-stage movement can sometimes be corrected with drainage fixes and reinforcement. Walls that were built without proper footing or drainage usually can't be saved — rebuilding them right is the fix.` },
       { q: `Will a new retaining wall increase my property value?`, a: `A failing wall absolutely decreases it — it's one of the first things inspectors and buyers flag on waterfront property. A well-built wall protects the value you already have and reads as quality the moment someone sees the lot.` },

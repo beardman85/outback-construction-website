@@ -1,0 +1,217 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import CTABlock from '../../components/CTABlock.astro';
+import ReviewStrip from '../../components/ReviewStrip.astro';
+import FAQ from '../../components/FAQ.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import business from '../../data/business.json';
+import services from '../../data/services.json';
+import { serviceContent } from '../../data/service-content';
+import projSeawall from '../../assets/proj-seawall.jpg';
+
+// Dedicated seawall-repair page — a standalone service page targeting the
+// "seawall repair" / "seawall repair near me" demand the general seawalls page
+// ranks for but doesn't specifically target. Not in the primary services nav
+// (kept to the five core services); reached via the seawalls page + sitemap.
+const slug = 'seawall-repair';
+const navLabel = 'Seawall Repair';
+const serviceType = 'Seawall Repair';
+const h1 = 'Seawall Repair on Southeast Nebraska Lakes';
+const metaTitle = 'Seawall Repair | Omaha & SE Nebraska Lakes | Outback';
+const metaDescription =
+  'Seawall repair for Nebraska lakefront homes — storm damage, erosion, ice heave, leaning & cracked walls. Honest repair-or-replace answers. Since 1998. (402) 456-7968.';
+
+const content = serviceContent[slug];
+const heroImg = projSeawall;
+
+const businessId = `${business.url}/#business`;
+const pageUrl = `${business.url}/services/${slug}`;
+
+const serviceNode = {
+  '@type': 'Service',
+  '@id': `${pageUrl}#service`,
+  name: h1,
+  serviceType,
+  provider: { '@id': businessId },
+  areaServed: business.serviceArea.cities.map((c) => ({ '@type': 'City', name: c })),
+  url: pageUrl,
+};
+const breadcrumb = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: business.url },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${business.url}/services` },
+    { '@type': 'ListItem', position: 3, name: navLabel, item: pageUrl },
+  ],
+};
+const faqPage = {
+  '@type': 'FAQPage',
+  mainEntity: content.faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const trustItems = ['Since 1998', '★ 5.0 on Google', 'Licensed & Insured', 'Owner-Operated'];
+const navLabelFor = (href: string) =>
+  services.find((s) => `/services/${s.slug}` === href)?.navLabel ?? 'Learn more';
+---
+<Base
+  title={metaTitle}
+  description={metaDescription}
+  canonicalPath={`/services/${slug}`}
+  schemaGraph={[serviceNode, breadcrumb, faqPage]}
+>
+  <!-- ================= HERO ================= -->
+  <section class="relative isolate flex min-h-[60vh] items-end overflow-hidden bg-ink-950 text-white">
+    <Image
+      src={heroImg}
+      alt="Seawall repair on a Southeast Nebraska lake by Outback Construction"
+      class="absolute inset-0 -z-20 h-full w-full object-cover"
+      widths={[768, 1200, 1600]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink-950 via-ink-950/70 to-ink-950/30"></div>
+    <div class="mx-auto w-full max-w-7xl px-4 py-14 lg:px-6 lg:py-20">
+      <Breadcrumbs crumbs={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: navLabel }]} />
+      <p class="mt-6 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-red-400">
+        <span class="inline-block h-px w-8 bg-red-500"></span>
+        Marine Construction · Since 1998
+      </p>
+      <h1 class="mt-3 max-w-3xl font-heading text-4xl font-extrabold leading-[1.08] tracking-tight drop-shadow sm:text-5xl">
+        {h1}
+      </h1>
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+        <a href="/contact" class="rounded-md bg-red-600 px-6 py-3 text-center text-base font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-red-700">
+          {business.cta.button}
+        </a>
+        <a href={business.telephoneHref} data-phone-cta class="rounded-md border-2 border-white/70 px-6 py-3 text-center text-base font-bold text-white transition hover:bg-white/10">
+          Call Matt: {business.telephoneDisplay}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRUST BAR ================= -->
+  <div class="border-b border-white/10 bg-ink-950">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 py-4 text-sm font-semibold text-white lg:px-6">
+      {trustItems.map((item) => <span>{item}</span>)}
+    </div>
+  </div>
+
+  <!-- ================= BODY ================= -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 lg:px-6">
+      <div class="grid gap-12 lg:grid-cols-3">
+        <!-- Main column -->
+        <div class="lg:col-span-2">
+          <!-- Intro -->
+          <div class="space-y-5 text-lg text-ink-700">
+            {content.intro.map((p) => <p data-reveal set:html={p} />)}
+          </div>
+
+          <!-- Sections -->
+          <div class="mt-12 space-y-12">
+            {content.sections.map((block) => {
+              if (block.type === 'todo') {
+                return <Fragment set:html={`<!-- TODO[MATT]: ${block.note} -->`} />;
+              }
+              return (
+                <div data-reveal>
+                  {block.heading && (
+                    <h2 class="flex items-baseline gap-3 font-heading text-2xl font-extrabold tracking-tight text-ink-900">
+                      <span class="h-6 w-1 flex-none translate-y-1 rounded bg-red-600"></span>
+                      {block.heading}
+                    </h2>
+                  )}
+                  {block.type === 'prose' && (
+                    <div class="mt-4 space-y-4 text-lg text-ink-700">
+                      {block.paragraphs.map((p) => <p set:html={p} />)}
+                    </div>
+                  )}
+                  {block.type === 'list' && (
+                    <div class="mt-4 space-y-4 text-lg text-ink-700">
+                      {block.intro && <p set:html={block.intro} />}
+                      {block.ordered ? (
+                        <ol class="space-y-3">
+                          {block.items.map((it, i) => (
+                            <li class="flex gap-3">
+                              <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-ink-950 text-sm font-bold text-white">{i + 1}</span>
+                              <span set:html={it} />
+                            </li>
+                          ))}
+                        </ol>
+                      ) : (
+                        <ul class="space-y-3">
+                          {block.items.map((it) => (
+                            <li class="flex gap-3">
+                              <svg class="mt-1.5 h-4 w-4 flex-none text-red-600" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.5 11.5L3 8l1.2-1.2 2.3 2.3L11.8 4l1.2 1.2z" /></svg>
+                              <span set:html={it} />
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {block.after && <p set:html={block.after} />}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          <!-- Related links -->
+          <div data-reveal class="mt-14 border-t border-ink-200 pt-8">
+            <h2 class="font-heading text-lg font-bold text-ink-900">Related services</h2>
+            <div class="mt-4 grid gap-4 sm:grid-cols-2">
+              {content.related.map((rel) => (
+                <a href={rel.href} class="group flex items-center justify-between gap-3 rounded-xl border border-ink-200 bg-ink-50 p-4 transition hover:border-red-600 hover:bg-white">
+                  <span class="text-ink-700">{rel.text}</span>
+                  <span class="flex-none text-sm font-bold text-red-600">
+                    {navLabelFor(rel.href)} <span class="transition-transform group-hover:translate-x-1">→</span>
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky CTA sidebar -->
+        <aside class="lg:col-span-1">
+          <div class="lg:sticky lg:top-24">
+            <div class="rounded-2xl border border-ink-200 bg-ink-950 p-6 text-white shadow-xl">
+              <h2 class="font-heading text-xl font-extrabold">Talk directly with Matt.</h2>
+              <p class="mt-2 text-sm text-ink-300">Honest answers, no pressure. You'll get a straight assessment and a real number.</p>
+              <a href="/contact" class="mt-5 block rounded-md bg-red-600 px-4 py-3 text-center text-sm font-bold text-white transition hover:bg-red-700">
+                {business.cta.button}
+              </a>
+              <a href={business.telephoneHref} data-phone-cta class="mt-3 block rounded-md border border-white/20 px-4 py-3 text-center text-sm font-bold text-white transition hover:bg-white/10">
+                {business.telephoneDisplay}
+              </a>
+              <ul class="mt-6 space-y-2 border-t border-white/10 pt-5 text-sm text-ink-200">
+                {trustItems.map((item) => (
+                  <li class="flex items-center gap-2">
+                    <svg class="h-4 w-4 flex-none text-red-500" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.5 11.5L3 8l1.2-1.2 2.3 2.3L11.8 4l1.2 1.2z" /></svg>
+                    {item.replace('★ ', '')}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <FAQ faqs={content.faqs} />
+
+  <!-- ================= REVIEWS ================= -->
+  <ReviewStrip />
+
+  <!-- ================= CTA ================= -->
+  <CTABlock heading={content.ctaHeading} />
+</Base>

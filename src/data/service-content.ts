@@ -27,6 +27,81 @@ export interface ServiceContent {
 }
 
 export const serviceContent: Record<string, ServiceContent> = {
+  'seawall-repair': {
+    intro: [
+      `A failing seawall rarely fails all at once. It starts with a lean, a crack, or soil quietly washing out behind the cap — and then one storm turns a small problem into an emergency. The good news: caught in time, most seawalls can be repaired instead of replaced, for a fraction of the cost.`,
+      `Outback Construction has repaired seawalls on Southeast Nebraska lakes since 1998 — from the Omaha metro out to the private and sandpit lakes across the region. We know exactly what these walls are up against here: February ice heave, all-summer boat wake, saturated sandy soils, and spring water levels that can swing by feet. And we know the difference between a wall that needs a targeted seawall repair and one that's genuinely past saving. You'll get that answer straight.`,
+    ],
+    sections: [
+      {
+        type: 'list',
+        heading: `When a seawall can be repaired instead of replaced`,
+        intro: `Not every failing wall needs to come out. If the core structure is still sound, repair is a legitimate fix — not a band-aid. These are usually candidates:`,
+        items: [
+          `A section that's leaning or bowing while the rest of the wall holds true`,
+          `Cracks, spalling, or a damaged cap on an otherwise solid wall`,
+          `Soil or backfill washing out behind the wall through gaps or failed drainage`,
+          `Scouring or undermining at the base, before it undercuts the whole structure`,
+          `Storm damage to a limited stretch of an otherwise healthy wall`,
+        ],
+        after: `The walls that truly need full replacement are usually the ones left too long — where failure has spread the length of the wall or the footing is gone. The only way to know which side of that line you're on is to have someone look. <a href="/contact" class="font-semibold text-red-600 underline hover:text-red-700">Get a shoreline assessment</a> and we'll tell you honestly.`,
+      },
+      {
+        type: 'list',
+        heading: `Common seawall failures we repair`,
+        items: [
+          `Ice-heave damage — panels shoved out of line after a hard freeze`,
+          `Erosion and scouring at the base of the wall`,
+          `Washed-out backfill and sinkholes forming in the lawn above`,
+          `Cracked, spalling, or crumbling concrete caps and panels`,
+          `Rusted or failing tie-backs and anchors`,
+          `Storm and high-water damage`,
+        ],
+      },
+      { type: 'todo', note: `confirm the specific repair methods/materials you want called out — e.g. re-anchoring, cap replacement, backfill & drainage rebuild, rip-rap toe protection` },
+      {
+        type: 'list',
+        ordered: true,
+        heading: `How a seawall repair works`,
+        intro: `No mystery, no runaround:`,
+        items: [
+          `<strong>You call, Matt answers.</strong> He walks the shoreline with you and looks at the actual wall — not a photo.`,
+          `<strong>You get a straight recommendation.</strong> Repair, replace, or "this can wait another season" — including when the honest answer is to do nothing yet.`,
+          `<strong>A real number.</strong> Once he's seen the site, you get an actual price, not a guess.`,
+          `<strong>Clean, respectful work.</strong> The crew shows up when promised, protects your lawn and sprinkler lines, and leaves the site clean.`,
+        ],
+      },
+      {
+        type: 'prose',
+        heading: `Storm & high-water damage`,
+        paragraphs: [
+          `After major storms and high-water years, we prioritize damage assessments for lakefront homeowners. A wall that took a hit is far cheaper to repair now than to replace after the next storm finishes the job. One homeowner's storm-damaged wall was repaired in a single day — no damage to the sprinkler lines, minimal impact on the lawn. If something looks wrong after a storm, call before the next one.`,
+        ],
+      },
+      {
+        type: 'prose',
+        heading: `Repair or replace? The honest math.`,
+        paragraphs: [
+          `A targeted repair on a sound wall can add years of life for a fraction of replacement cost. But putting money into a wall that's structurally done is just delaying the inevitable — and we'll tell you if that's what we see. The assessment is where that call gets made, and it costs you nothing but a walk down to the water.`,
+        ],
+      },
+    ],
+    faqs: [
+      { q: `How do I know if my seawall needs repair or full replacement?`, a: `If the core structure is sound and the damage is limited to a section — a lean, a crack, some washed-out backfill — it's usually a repair. If the failure has spread the length of the wall or the footing is gone, it's a replacement. The honest way to know is an on-site look, and we'll tell you plainly which one you're facing.` },
+      { q: `How much does seawall repair cost?`, a: `It depends on the damage, the wall system, water depth, and access — a small sectional fix and a major storm rebuild are very different numbers. Anyone who quotes you without seeing the wall is guessing. The assessment is how we give you a real figure, and it's free.` },
+      { q: `Can you repair just one section of my seawall?`, a: `Often, yes. If the rest of the structure is sound, sectional repair is a legitimate fix and a fraction of replacement cost. We'll tell you honestly whether your wall is a candidate.` },
+      { q: `Do you do emergency or storm seawall repair?`, a: `After big storms and high-water years we prioritize damage assessments for lakefront homeowners. If your wall took damage, call — catching it early is the difference between a repair and a replacement.`, todo: `confirm how you want to describe emergency/after-storm response and turnaround` },
+      { q: `How long does a seawall repair take?`, a: `Many repairs are quick — some straightforward jobs are done in a single day. Bigger repairs take longer, but Matt gives you a realistic timeline up front and the crew works to it.` },
+      { q: `Where do you repair seawalls?`, a: `Across Southeast Nebraska — the Omaha metro and the private and sandpit lakes throughout the region. If you're on a lake here and your wall is failing, you're in our area.` },
+    ],
+    related: [
+      { text: `Building a new seawall instead?`, href: `/services/seawalls` },
+      { text: `Retaining wall up the bank failing too?`, href: `/services/retaining-walls` },
+      { text: `Water-access-only repair site?`, href: `/services/barge-work` },
+    ],
+    ctaHeading: `Not sure if it's a repair or a replacement? Let's find out — before the next storm does.`,
+  },
+
   seawalls: {
     intro: [
       `Your seawall is the line between the lake and everything you've built above it — the lawn, the landscaping, the patio, the foundation. When it's sound, you never think about it. When it starts to fail, every storm becomes a question mark.`,
@@ -57,7 +132,7 @@ export const serviceContent: Record<string, ServiceContent> = {
         type: 'prose',
         heading: `Seawall repair & storm damage`,
         paragraphs: [
-          `Not every failing wall needs replacement. Where the structure is sound, targeted repair can add years of life — and we'll tell you plainly when that's the case. One homeowner's storm-damaged wall was repaired in a single day, with no damage to sprinkler lines and minimal impact on the lawn. That's the standard: fix the wall, respect the property.`,
+          `Not every failing wall needs replacement. Where the structure is sound, a targeted <a class="font-semibold text-red-600 underline hover:text-red-700" href="/services/seawall-repair">seawall repair</a> can add years of life — and we'll tell you plainly when that's the case. One homeowner's storm-damaged wall was repaired in a single day, with no damage to sprinkler lines and minimal impact on the lawn. That's the standard: fix the wall, respect the property.`,
           `After major storms and high-water years, we prioritize damage assessments for lakefront homeowners. If something looks wrong after a storm, call before the next one.`,
         ],
       },
@@ -77,6 +152,7 @@ export const serviceContent: Record<string, ServiceContent> = {
       { q: `What does a new seawall cost?`, a: `Honestly: it depends on length, water depth, soil, access, and the wall system. Anyone who quotes you a price without seeing the site is guessing. The assessment is how we give you a real number — and it costs you nothing but a walk down to the water.` },
     ],
     related: [
+      { text: `Repairing an existing seawall?`, href: `/services/seawall-repair` },
       { text: `Protecting a beach behind your wall?`, href: `/services/beach-reclamation` },
       { text: `Waterfront retaining wall up the bank?`, href: `/services/retaining-walls` },
       { text: `Water-access-only site?`, href: `/services/barge-work` },
